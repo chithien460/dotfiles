@@ -1,13 +1,15 @@
 set nocompatible
 filetype plugin on
 syntax on
+set nowrap
 set hidden
 set nu rnu
+set clipboard+=unnamedplus
 
 let mapleader = " "
 
-map <Space> <Leader>
 noremap <Leader>v :e $MYVIMRC<cr>
+inoremap jk <Esc>
 
 " Enable Highlight Search
 set nohlsearch
@@ -26,19 +28,25 @@ set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 
-
+" vim-plug install
 call plug#begin()
 
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'machakann/vim-highlightedyank' 
 Plug 'morhetz/gruvbox'
 
 call plug#end()
 
+" make it rain
 let g:vimwiki_list = [{ 'path': '~/notes/',
        \ 'syntax':'markdown', 'ext': '.md' }]
 
+let g:highlightedyank_highlight_duration = 300
+
+" love shine a light
 colorscheme gruvbox
+
 
 augroup vimwiki
 	au! BufWritePost ~/notes/* !git add "%";git commit -m "Auto commit of %:t." "%"
