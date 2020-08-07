@@ -18,6 +18,15 @@ set ignorecase
 " Overrides ignorecase if pattern contains upcase
 set smartcase
 
+
+set encoding=UTF-8
+set mouse=a 
+
+set tabstop=4 
+set softtabstop=0
+set shiftwidth=4
+
+
 call plug#begin()
 
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
