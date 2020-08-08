@@ -7,7 +7,8 @@
 - link:
         #~/.tmux.conf: tmux.conf
         #~/.vim: vim
-        ~/.config/nvim/init.vim: init.vim 
+        ~/.local/share/nvim/site/autoload/plug.vim: nvim/autoload/vim-plug/plug.vim
+        ~/.config/nvim/init.vim: nvim/init.vim 
 
 - create:
     #- ~/downloads
