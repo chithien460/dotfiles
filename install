@@ -2,14 +2,54 @@
 
 set -e
 
-CONFIG="install.conf.yaml"
+CONFIG_SUFFIX=".install.conf.yaml"
 DOTBOT_DIR="dotbot"
 
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# setup Git parameters
+#GIT_USERNAME=${GIT_USERNAME:-${1:-""}}
+#GIT_PASSWORD=${GIT_PASWORD:-${2:-""}}
+#GIT_EMAIL=${GIT_EMAIL:-${3:-""}}
+
+_dotbot_jobs() {
 cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+# OS additions.
+if [[ $OSTYPE == 'linux-gnu' ]]; then
+	 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "ubuntu${CONFIG_SUFFIX}"
+elif [[ $OSTYPE == darwin* ]]; then
+    "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "macos${CONFIG_SUFFIX}"
+fi
+set +e
+}
+
+# old command - not select OS
+#"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+
+_hello_dude() {
+    if command -v lsb_release >/dev/null 2>&1; then
+        distro_name=$(lsb_release -sd 2>&1)
+    else
+        distro_name="Unknown"
+    fi
+
+    if [ ! -s "${HOME}/.dotfiles" ]; then
+        first_run_welcome="chithien460/dotfiles - first run"
+    else
+        first_run_welcome="chithien460/dotfiles - updating"
+    fi
+
+    _done "${distro_name} : ${first_run_welcome}"
+}
+
+_done() {
+    local icon
+    icon="${2:-"[  ]"}"
+    printf "\\r  \\033[00;40m${icon} %s\\n" "${1}"
+}
+
+_hello_dude
