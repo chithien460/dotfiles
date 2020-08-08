@@ -53,7 +53,6 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 # FUNCTIONS
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
-# sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 fi
 
 function ns {
@@ -64,4 +63,5 @@ function ns {
 }
 
 
-
+# ALIAS
+alias la = 'ls -lah'
