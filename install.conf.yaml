@@ -1,17 +1,18 @@
 - defaults:
-   link:
+    link:
+      create: true
       relink: true
 
 - clean: ['~']
 
 - create:
-    - ~/.local/share/nvim/site/autoload
+    #- ~/.local/share/nvim/site/autoload
     #- ~/downloads
     #   - ~/.vim/undo-history
 
 - link:
     #~/.tmux.conf: tmux.conf
-    ~/.ssh/config: .ssh/config
+    ~/.ssh/config: ssh/config
     ~/.zshrc: .zshrc
     ~/.local/share/nvim/site/autoload/plug.vim: nvim/autoload/vim-plug/plug.vim
     ~/.config/nvim/init.vim: nvim/init.vim 

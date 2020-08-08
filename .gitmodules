@@ -11,3 +11,6 @@
 [submodule "zsh/powerlevel10k"]
 	path = zsh/powerlevel10k
 	url = git@github.com:romkatv/powerlevel10k.git
+[submodule "dotbot-apt"]
+	path = dotbot-apt
+	url = https://github.com/bryant1410/dotbot-apt
