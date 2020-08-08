@@ -51,7 +51,7 @@ colorscheme gruvbox
 
 
 augroup vimwiki
-	au! BufWritePost ~/notes/* !git add "%";git commit -m "Auto commit of %:t." "%"; git push
+	au BufWritePost ~/notes/* !git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
 augroup END
 
 " WSL yank support
