@@ -40,19 +40,21 @@ Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
-" make it rain
+" Plugins configuration
 let g:vimwiki_list = [{ 'path': '~/notes/',
        \ 'syntax':'markdown', 'ext': '.md' }]
 
 let g:highlightedyank_highlight_duration = 300
 
-" love shine a light
+" Theme
 colorscheme gruvbox
 
-
+" Autocommands
 augroup vimwiki
-	au BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
+	autocmd!
+	autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
 augroup END
+
 
 " WSL yank support
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
