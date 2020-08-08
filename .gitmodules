@@ -8,3 +8,6 @@
 [submodule "nvim/autoload/vim-plug"]
 	path = nvim/autoload/vim-plug
 	url = git@github.com:junegunn/vim-plug.git
+[submodule "zsh/powerlevel10k"]
+	path = zsh/powerlevel10k
+	url = git@github.com:romkatv/powerlevel10k.git

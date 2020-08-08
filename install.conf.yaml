@@ -4,15 +4,19 @@
 
 - clean: ['~']
 
-- link:
-        #~/.tmux.conf: tmux.conf
-        ~/.zshrc: .zshrc
-        ~/.local/share/nvim/site/autoload/plug.vim: nvim/autoload/vim-plug/plug.vim
-        ~/.config/nvim/init.vim: nvim/init.vim 
-
 - create:
+    - ~/.local/share/nvim/site/autoload
     #- ~/downloads
     #   - ~/.vim/undo-history
+
+- link:
+    #~/.tmux.conf: tmux.conf
+    ~/.ssh/config: .ssh/config
+    ~/.zshrc: .zshrc
+    ~/.local/share/nvim/site/autoload/plug.vim: nvim/autoload/vim-plug/plug.vim
+    ~/.config/nvim/init.vim: nvim/init.vim 
+    ~/powerlevel10k: zsh/powerlevel10k
     
 - shell:
-        - [git submodule update --init --recursive, Installing submodules]
+    - sudo chsh -s $(which zsh)
+    - [git submodule update --init --recursive, Installing submodules]
