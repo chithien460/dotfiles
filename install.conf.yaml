@@ -6,13 +6,13 @@
 
 - link:
         #~/.tmux.conf: tmux.conf
-        #~/.vim: vim
+        ~/.zshrc: .zshrc
         ~/.local/share/nvim/site/autoload/plug.vim: nvim/autoload/vim-plug/plug.vim
         ~/.config/nvim/init.vim: nvim/init.vim 
 
 - create:
     #- ~/downloads
     #   - ~/.vim/undo-history
-
+    
 - shell:
         - [git submodule update --init --recursive, Installing submodules]
