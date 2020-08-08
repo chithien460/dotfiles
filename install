@@ -59,9 +59,9 @@ _hello_dude() {
     fi
 
     if [ ! -s "${HOME}/.dotfiles" ]; then
-        first_run_welcome="chithien460/dotfiles - first run"
+        first_run_welcome="tecix/dotfiles - first run"
     else
-        first_run_welcome="chithien460/dotfiles - updating"
+        first_run_welcome="tecix/dotfiles - updating"
     fi
     _done "$OSTYPE : ${distro_name} : ${first_run_welcome}"
 }
