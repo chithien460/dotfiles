@@ -5,6 +5,7 @@ set nowrap
 set hidden
 set nu rnu
 set clipboard+=unnamedplus
+set shell=/usr/bin/zsh
 
 let mapleader = " "
 
@@ -35,6 +36,7 @@ Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'machakann/vim-highlightedyank' 
 Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
