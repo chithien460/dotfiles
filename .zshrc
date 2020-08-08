@@ -64,4 +64,4 @@ function ns {
 
 
 # ALIAS
-alias la = 'ls -lah'
+alias la='ls -lah'
