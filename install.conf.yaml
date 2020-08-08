@@ -1,7 +1,7 @@
 - defaults:
     link:
-      create: true
-      relink: true
+        create: true
+        relink: true
 
 - clean: ['~']
 
@@ -13,11 +13,13 @@
 - link:
     #~/.tmux.conf: tmux.conf
     ~/.ssh/config: ssh/config
-    ~/.zshrc: .zshrc
+    ~/.zshrc: zsh/.zshrc
     ~/.local/share/nvim/site/autoload/plug.vim: nvim/autoload/vim-plug/plug.vim
     ~/.config/nvim/init.vim: nvim/init.vim 
     ~/powerlevel10k: zsh/powerlevel10k
+    ~/.config/kitty: kitty
     
 - shell:
-    - sudo chsh -s $(which zsh)
+    #- sudo chsh -s $(which zsh)
     - [git submodule update --init --recursive, Installing submodules]
+    - [nvim +PlugInstall +qall, Installing NeoVim plugins with vim-plug]
