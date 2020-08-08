@@ -5,13 +5,13 @@
 - clean: ['~']
 
 - link:
-        ~/.tmux.conf: tmux.conf
-        ~/.vim: vim
-        ~/.vimrc: vimrc
+        #~/.tmux.conf: tmux.conf
+        #~/.vim: vim
+        ~/.config/nvim/init.vim: init.vim 
 
 - create:
-        - ~/downloads
-        - ~/.vim/undo-history
+    #- ~/downloads
+    #   - ~/.vim/undo-history
 
 - shell:
         - [git submodule update --init --recursive, Installing submodules]
