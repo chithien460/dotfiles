@@ -74,3 +74,7 @@ function ns {
 # ALIAS
 alias ls='ls --color=auto'
 alias la='ls -lah --color=auto'
+
+# VARIABLES
+export VISUAL=nvim
+export EDITOR="$VISUAL"
