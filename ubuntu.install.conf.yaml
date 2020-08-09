@@ -6,9 +6,9 @@
 - clean: ['~']
 
 #- create:
-    #- ~/.local/share/nvim/site/autoload
-    #- ~/downloads
-    #   - ~/.vim/undo-history
+#    - ~/.local/share/nvim/site/autoload
+#    - ~/downloads
+#    - ~/.vim/undo-history
 
 - link:
     #~/.tmux.conf: tmux.conf
@@ -20,7 +20,8 @@
     ~/.config/kitty: kitty
     
 - shell:
-    - [git submodule update --init --recursive, Installing submodules]
+    - description: Installing submodules 
+      command: git submodule update --init --recursive
       stdout: true
       stdin: true
 
