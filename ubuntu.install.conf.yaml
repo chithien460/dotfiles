@@ -20,17 +20,17 @@
     ~/.config/kitty: kitty
     
 - shell:
-    - description: Installing submodules 
-      command: git submodule update --init --recursive
-      stdout: true
-      stdin: true
+    # - description: Installing submodules 
+    #   command: git submodule update --init --recursive
+    #   stdout: true
+    #   stdin: true
 
-    - [nvim +PlugInstall +qall, Installing NeoVim plugins with vim-plug]
+      #- [nvim +PlugInstall +qall, Installing NeoVim plugins with vim-plug]
     
-    - description: change shells
-      command: sudo chsh -s $(which zsh)
-      stdout: true
-      stdin: true
+      #- description: change shells
+      #  command: sudo chsh -s $(which zsh)
+      #  stdout: true
+      #  stdin: true
       #    - description: install homebrew
       #      command: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
       #      stdout: true
