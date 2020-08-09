@@ -5,7 +5,7 @@
 
 - clean: ['~']
 
-- create:
+#- create:
     #- ~/.local/share/nvim/site/autoload
     #- ~/downloads
     #   - ~/.vim/undo-history
@@ -21,6 +21,9 @@
     
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
+      stdout: true
+      stdin: true
+
     - [nvim +PlugInstall +qall, Installing NeoVim plugins with vim-plug]
     
     - description: change shells
