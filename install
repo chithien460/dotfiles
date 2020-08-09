@@ -35,7 +35,9 @@ _dotbot_do_links() {
 
 	# OS additions.
 	if [[ $OSTYPE == 'linux-gnu' ]]; then
-		 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "ubuntu${CONFIG_SUFFIX}"
+		"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "ubuntu${CONFIG_SUFFIX}"
+	elif [[ $OSTYPE == 'linux-android' ]]; then
+		"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "ubuntu${CONFIG_SUFFIX}"
 	elif [[ $OSTYPE == darwin* ]]; then
 		"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "macos${CONFIG_SUFFIX}"
 	fi
