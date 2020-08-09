@@ -16,7 +16,7 @@
     ~/.zshrc: zsh/.zshrc
     ~/.local/share/nvim/site/autoload/plug.vim: nvim/autoload/vim-plug/plug.vim
     ~/.config/nvim/init.vim: nvim/init.vim 
-    ~/powerlevel10k: zsh/powerlevel10k
+    ~/.zsh/powerlevel10k: zsh/powerlevel10k
     ~/.config/kitty: kitty
     
 - shell:

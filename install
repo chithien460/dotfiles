@@ -100,6 +100,15 @@ _hello_dude() {
     _done "$OSTYPE : ${distro_name} : ${first_run_welcome}"
 }
 
+_install_dependencies() {
+	sudo apt-get install \
+		git \
+		python3 python3-apt \
+		-y -qq --no-install-recommends \
+		>/dev/null
+}
+
+
 _init_submodules() {
 	git submodule sync --recursive >/dev/null
 	git submodule update \
@@ -111,6 +120,7 @@ _init_submodules() {
 	}
 
 _hello_dude
+_install_dependencies
 _init_submodules
 _dotbot_do_links
 _configure_nvim
