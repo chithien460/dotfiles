@@ -27,5 +27,5 @@ HostName 45.252.250.220
 User root
 
 Host prod.gira
-HostName 172.67.131.121
+HostName 45.252.250.248
 User root
