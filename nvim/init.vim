@@ -11,6 +11,7 @@ let mapleader = " "
 
 noremap <Leader>v :e $MYVIMRC<cr>
 inoremap jk <Esc>
+noremap <Leader>w :set wrap!<cr>
 
 " Enable Highlight Search
 set nohlsearch
@@ -28,6 +29,21 @@ set mouse=a
 set tabstop=4 
 set softtabstop=0
 set shiftwidth=4
+
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
 
 " vim-plug install
 call plug#begin()

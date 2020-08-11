@@ -2,7 +2,7 @@
 # ==============================
 #
 # INSTALL MISSING PACKAGES 
-if [ ! -f ~/powerlevel10k/powerlevel10k.zsh-theme ]; then
+if [ ! -f ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme ]; then
     #source ~/.I
 fi
 
