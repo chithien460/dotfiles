@@ -32,11 +32,14 @@ set shiftwidth=4
 " vim-plug install
 call plug#begin()
 
-Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+"Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'machakann/vim-highlightedyank' 
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 

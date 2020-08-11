@@ -56,6 +56,7 @@ source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
 # FUNCTIONS
@@ -74,7 +75,9 @@ function ns {
 # ALIAS
 alias ls='ls --color=auto'
 alias la='ls -lah --color=auto'
+alias clip='xclip -sel c'
 
 # VARIABLES
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+

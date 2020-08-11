@@ -14,3 +14,6 @@
 [submodule "dotbot-apt"]
 	path = dotbot-apt
 	url = https://github.com/bryant1410/dotbot-apt
+[submodule "zsh/fzf"]
+	path = zsh/fzf
+	url = git@github.com:junegunn/fzf.git
