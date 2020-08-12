@@ -11,6 +11,7 @@ let mapleader = " "
 
 noremap <Leader>v :e $MYVIMRC<cr>
 inoremap jk <Esc>
+noremap <Leader>w :set wrap!<cr>
 
 " Enable Highlight Search
 set nohlsearch
@@ -29,14 +30,32 @@ set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
+
 " vim-plug install
 call plug#begin()
 
-Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+"Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'machakann/vim-highlightedyank' 
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
