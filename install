@@ -120,7 +120,7 @@ _init_submodules() {
 	}
 
 _hello_dude
-_install_dependencies
+#_install_dependencies
 _init_submodules
 _dotbot_do_links
 _configure_nvim
