@@ -2,7 +2,7 @@
 # ==============================
 #
 # INSTALL MISSING PACKAGES 
-if [ ! -f ~/powerlevel10k/powerlevel10k.zsh-theme ]; then
+if [ ! -f ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme ]; then
     #source ~/.I
 fi
 
@@ -40,8 +40,8 @@ zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
 eval "$(dircolors -b)"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-colors ''
+#zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
 zstyle ':completion:*' menu select=long
@@ -56,6 +56,14 @@ source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+# VARIABLES
+#LS_COLORS="ow=01;36;40" && export LS_COLORS
+export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
+export VISUAL=nvim
+export EDITOR="$VISUAL"
 
 
 # FUNCTIONS
@@ -74,6 +82,7 @@ function ns {
 # ALIAS
 alias ls='ls --color=auto'
 alias la='ls -lah --color=auto'
+alias clip='xclip -sel c'
 
 # VARIABLES
 export VISUAL=nvim
