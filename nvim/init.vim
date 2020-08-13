@@ -11,6 +11,7 @@ let mapleader = " "
 
 noremap <Leader>v :e $MYVIMRC<cr>
 inoremap jk <Esc>
+vnoremap jk <Esc>
 nnoremap <Leader>g :Goyo<CR>
 noremap <Leader>w :set wrap!<cr>
 
