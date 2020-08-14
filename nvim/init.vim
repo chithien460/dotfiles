@@ -4,8 +4,14 @@ syntax on
 set nowrap
 set hidden
 set nu rnu
+set nohlsearch
+set incsearch
+set ignorecase
+set smartcase
+set autoindent
 set clipboard+=unnamedplus
 set shell=/usr/bin/zsh
+
 
 let mapleader = " "
 
@@ -14,15 +20,6 @@ inoremap jk <Esc>
 vnoremap jk <Esc>
 nnoremap <Leader>g :Goyo<CR>
 noremap <Leader>w :set wrap!<cr>
-
-" Enable Highlight Search
-set nohlsearch
-" Highlight while search
-set incsearch
-" Case Insensitivity Pattern Matching
-set ignorecase
-" Overrides ignorecase if pattern contains upcase
-set smartcase
 
 
 set encoding=UTF-8
@@ -48,6 +45,12 @@ au BufNewFile,BufRead *.js, *.html, *.css
 
 
 " vim-plug install
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin()
 
 "Plug 'vimwiki/vimwiki', { 'branch': 'dev' }

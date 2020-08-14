@@ -1,3 +1,7 @@
+# This is Ubuntu packages:
+# - use NeoVim
+# - use apt
+
 - defaults:
     link:
         create: true
@@ -14,7 +18,8 @@
     #~/.tmux.conf: tmux.conf
     ~/.ssh/config: ssh/config
     ~/.zshrc: zsh/.zshrc
-    ~/.local/share/nvim/site/autoload/plug.vim: nvim/autoload/vim-plug/plug.vim
+    ~/.p10k.zsh: zsh/.p10k.zsh
+    # ~/.local/share/nvim/site/autoload/plug.vim: nvim/autoload/vim-plug/plug.vim
     ~/.config/nvim/init.vim: nvim/init.vim 
     ~/.zsh/powerlevel10k: zsh/powerlevel10k
     ~/.config/kitty: kitty
@@ -25,7 +30,7 @@
     #   stdout: true
     #   stdin: true
 
-    #- [nvim +PlugInstall +qall, Installing NeoVim plugins with vim-plug]
+    # - [nvim +PlugInstall +qall, Installing NeoVim plugins with vim-plug]
 
     #- description: change shells
     #  command: sudo chsh -s $(which zsh)

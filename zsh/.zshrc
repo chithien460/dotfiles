@@ -87,3 +87,6 @@ alias clip='xclip -sel c'
 # VARIABLES
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+
+# alternative to select-word-style bash
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
