@@ -30,21 +30,6 @@ set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
-
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
-
-
 " vim-plug install
 call plug#begin()
 
@@ -83,3 +68,23 @@ if executable(s:clip)
             autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
     augroup END
 endif
+
+" Configure for Python development
+"let g:pymode_run_bind='<F5>'
+imap <F5> <Esc>:w<CR>:!clear;python3 %<CR>
+
+" HARD MODE
+no <down> <Nop>
+no <left> <Nop>
+no <right> <Nop>
+no <up> <Nop>
+
+ino <down> <Nop>
+ino <left> <Nop>
+ino <right> <Nop>
+ino <up> <Nop>
+
+vno <down> <Nop>
+vno <left> <Nop>
+vno <right> <Nop>
+vno <up> <Nop>
