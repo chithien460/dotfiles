@@ -1,3 +1,7 @@
+# This is Ubuntu packages:
+# - use NeoVim
+# - use apt
+
 - defaults:
     link:
         create: true
@@ -14,7 +18,8 @@
     #~/.tmux.conf: tmux.conf
     ~/.ssh/config: ssh/config
     ~/.zshrc: zsh/.zshrc
-    ~/.local/share/nvim/site/autoload/plug.vim: nvim/autoload/vim-plug/plug.vim
+    ~/.p10k.zsh: zsh/.p10k.zsh
+    # ~/.local/share/nvim/site/autoload/plug.vim: nvim/autoload/vim-plug/plug.vim
     ~/.config/nvim/init.vim: nvim/init.vim 
     ~/.zsh/powerlevel10k: zsh/powerlevel10k
     ~/.config/kitty: kitty
@@ -25,29 +30,30 @@
     #   stdout: true
     #   stdin: true
 
-      #- [nvim +PlugInstall +qall, Installing NeoVim plugins with vim-plug]
-    
-      #- description: change shells
-      #  command: sudo chsh -s $(which zsh)
-      #  stdout: true
-      #  stdin: true
-      #    - description: install homebrew
-      #      command: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-      #      stdout: true
-      #      stdin: true
-      #    - description: install homebrew formulas
-      #      command: bash -c "cd mac && brew bundle"
-      #      stdout: true
-      #      stdin: true
-      #    - description: install pip2 modules
-      #      command: bash -c "pip2 install -r pip/pip2-requirements.txt"
-      #      stdout: true
-      #      stdin: true
-      #    - description: install pip3 modules
-      #      command: bash -c "pip3 install -r pip/pip3-requirements.txt"
-      #      stdout: true
-      #      stdin: true
-      #    - description: install npm packages
-      #      command: bash -c "< npm/packages.txt xargs npm install -g"
-      #      stdout: true
-      #      stdin: true
+    # - [nvim +PlugInstall +qall, Installing NeoVim plugins with vim-plug]
+
+    #- description: change shells
+    #  command: sudo chsh -s $(which zsh)
+    #  stdout: true
+    #  stdin: true
+    #
+    #    - description: install homebrew
+    #      command: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    #      stdout: true
+    #      stdin: true
+    #    - description: install homebrew formulas
+    #      command: bash -c "cd mac && brew bundle"
+    #      stdout: true
+    #      stdin: true
+    #    - description: install pip2 modules
+    #      command: bash -c "pip2 install -r pip/pip2-requirements.txt"
+    #      stdout: true
+    #      stdin: true
+    #    - description: install pip3 modules
+    #      command: bash -c "pip3 install -r pip/pip3-requirements.txt"
+    #      stdout: true
+    #      stdin: true
+    #    - description: install npm packages
+    #      command: bash -c "< npm/packages.txt xargs npm install -g"
+    #      stdout: true
+    #      stdin: true

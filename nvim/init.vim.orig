@@ -76,6 +76,7 @@ if executable(s:clip)
     augroup END
 endif
 
+<<<<<<< HEAD
 " Configure for Python development
 "let g:pymode_run_bind='<F5>'
 imap <F5> <Esc>:w<CR>:!clear;python3 %<CR>
@@ -95,6 +96,7 @@ vno <down> <Nop>
 vno <left> <Nop>
 vno <right> <Nop>
 vno <up> <Nop>
+=======
 
 " ----------------------------------------------------------------------------
 "  goyo.vim + limelight.vim
@@ -150,3 +152,4 @@ vno <up> <Nop>
 
 " autocmd! User GoyoEnter nested call <SID>goyo_enter()
 " autocmd! User GoyoLeave nested call <SID>goyo_leave()
+>>>>>>> 519e678a6c0eb31cdfa3683562b9d499f203a9a5

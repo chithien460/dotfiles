@@ -34,9 +34,7 @@ _dotbot_do_links() {
 	git submodule update --init --recursive "${DOTBOT_DIR}"
 
 	# OS additions.
-	if [[ $OSTYPE == 'linux-gnu' ]]; then
-		"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "ubuntu${CONFIG_SUFFIX}"
-	elif [[ $OSTYPE == 'linux-android' ]]; then
+	if [[ $OSTYPE == linux* ]]; then
 		"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "ubuntu${CONFIG_SUFFIX}"
 	elif [[ $OSTYPE == darwin* ]]; then
 		"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "macos${CONFIG_SUFFIX}"
@@ -120,7 +118,7 @@ _init_submodules() {
 	}
 
 _hello_dude
-_install_dependencies
+#_install_dependencies
 _init_submodules
 _dotbot_do_links
 _configure_nvim
