@@ -7,7 +7,7 @@ set nu rnu
 set clipboard+=unnamedplus
 set shell=/usr/bin/zsh
 
-let mapleader = " "
+" let mapleader = " "
 
 noremap <Leader>v :e $MYVIMRC<cr>
 inoremap jk <Esc>
@@ -51,8 +51,9 @@ au BufNewFile,BufRead *.js, *.html, *.css
 call plug#begin()
 
 "Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
-Plug 'junegunn/limelight.vim'
+" Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'shushcat/vim-minimd'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'machakann/vim-highlightedyank' 
 Plug 'morhetz/gruvbox'
