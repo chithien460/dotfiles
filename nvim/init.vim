@@ -4,6 +4,7 @@ set nocompatible
 filetype plugin indent on
 syntax on
 
+set modeline
 set nowrap
 set hidden
 set nu rnu
