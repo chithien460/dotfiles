@@ -16,6 +16,7 @@ set clipboard+=unnamedplus
 set shell=/usr/bin/zsh
 set pastetoggle=<F2>
 
+set nohls
 set encoding=UTF-8
 set mouse=a 
 set tabstop=4 
@@ -36,9 +37,10 @@ endif
 
 call plug#begin()
 
-lug 'shushcat/vim-minimd'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'shushcat/vim-minimd'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'machakann/vim-highlightedyank' 
+Plug 'junegunn/gogo.vim'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -53,32 +55,33 @@ colorscheme gruvbox
 " ------------------------------ 
 " KEY BIDDINGS
 " ------------------------------ 
-inoremap jk <Esc>
-cnoremap jk <Esc>
-vnoremap jk <Esc>
+" inoremap jk <Esc>
+" cnoremap jk <Esc>
+" vnoremap jk <Esc>
 nnoremap <Leader>g :Goyo<CR>
 noremap <Leader>w :set wrap!<CR>
 noremap <C-p> :Files<CR>
+noremap <C-h> :History<CR>
 
 " Configure for Python development
 let g:pymode_run_bind='<F5>'
 imap <F5> <Esc>:w<CR>:!clear;python3 %<CR>
 
 " HARD MODE
-no <down> <Nop>
-no <left> <Nop>
-no <right> <Nop>
-no <up> <Nop>
+" no <down> <Nop>
+" no <left> <Nop>
+" no <right> <Nop>
+" no <up> <Nop>
 
-ino <down> <Nop>
-ino <left> <Nop>
-ino <right> <Nop>
-ino <up> <Nop>
+" ino <down> <Nop>
+" ino <left> <Nop>
+" ino <right> <Nop>
+" ino <up> <Nop>
 
-vno <down> <Nop>
-vno <left> <Nop>
-vno <right> <Nop>
-vno <up> <Nop>
+" vno <down> <Nop>
+" vno <left> <Nop>
+" vno <right> <Nop>
+" vno <up> <Nop>
 
 " For Emacs-style editing on the command-line: >
 " --------------------------------------------
