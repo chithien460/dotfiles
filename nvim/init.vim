@@ -7,7 +7,6 @@ syntax on
 set nowrap
 set hidden
 set nu rnu
-set nohlsearch
 set incsearch
 set ignorecase
 set smartcase
@@ -26,7 +25,6 @@ let mapleader = " "
 
 
 " vim-plug install
-" --------------------
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -73,6 +71,22 @@ noremap <C-p> :Files<CR>
 " Configure for Python development
 let g:pymode_run_bind='<F5>'
 noremap <F5> <Esc>:w<CR>:!python3 %<CR>
+
+" HARD MODE
+" no <down> <Nop>
+" no <left> <Nop>
+" no <right> <Nop>
+" no <up> <Nop>
+
+" ino <down> <Nop>
+" ino <left> <Nop>
+" ino <right> <Nop>
+" ino <up> <Nop>
+
+" vno <down> <Nop>
+" vno <left> <Nop>
+" vno <right> <Nop>
+" vno <up> <Nop>
 
 " For Emacs-style editing on the command-line: >
 " --------------------------------------------
