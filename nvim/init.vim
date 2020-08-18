@@ -27,7 +27,10 @@ let mapleader = " "
 
 " --------------------
 " vim-plug install
+<<<<<<< HEAD
 " --------------------
+=======
+>>>>>>> 0a5c62a... make change on macOS
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -36,8 +39,8 @@ endif
 
 call plug#begin()
 
-lug 'shushcat/vim-minimd'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'shushcat/vim-minimd'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'machakann/vim-highlightedyank' 
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
@@ -53,10 +56,10 @@ colorscheme gruvbox
 " ------------------------------ 
 " KEY BIDDINGS
 " ------------------------------ 
-inoremap jk <Esc>
-cnoremap jk <Esc>
-vnoremap jk <Esc>
-nnoremap <Leader>g :Goyo<CR>
+" inoremap jk <Esc>
+" cnoremap jk <Esc>
+" vnoremap jk <Esc>
+" nnoremap <Leader>g :Goyo<CR>
 noremap <Leader>w :set wrap!<CR>
 noremap <C-p> :Files<CR>
 
@@ -65,20 +68,20 @@ let g:pymode_run_bind='<F5>'
 imap <F5> <Esc>:w<CR>:!clear;python3 %<CR>
 
 " HARD MODE
-no <down> <Nop>
-no <left> <Nop>
-no <right> <Nop>
-no <up> <Nop>
+" no <down> <Nop>
+" no <left> <Nop>
+" no <right> <Nop>
+" no <up> <Nop>
 
-ino <down> <Nop>
-ino <left> <Nop>
-ino <right> <Nop>
-ino <up> <Nop>
+" ino <down> <Nop>
+" ino <left> <Nop>
+" ino <right> <Nop>
+" ino <up> <Nop>
 
-vno <down> <Nop>
-vno <left> <Nop>
-vno <right> <Nop>
-vno <up> <Nop>
+" vno <down> <Nop>
+" vno <left> <Nop>
+" vno <right> <Nop>
+" vno <up> <Nop>
 
 " For Emacs-style editing on the command-line: >
 " --------------------------------------------
