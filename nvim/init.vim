@@ -1,10 +1,10 @@
-" ------------------------
 "  SET OUT STUFF
 " -----------------------
 set nocompatible
-filetype plugin on
+filetype plugin indent on
 syntax on
 
+set modeline
 set nowrap
 set hidden
 set nu rnu
@@ -26,9 +26,7 @@ set shiftwidth=4
 let mapleader = " "
 
 
-" --------------------
 " vim-plug install
-" --------------------
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -37,12 +35,21 @@ endif
 
 call plug#begin()
 
-Plug 'shushcat/vim-minimd'
+" Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'machakann/vim-highlightedyank' 
-Plug 'junegunn/gogo.vim'
+" Plug 'tpope/vim-fugitive'
+Plug 'machakann/vim-highlightedyank' 
 Plug 'morhetz/gruvbox'
-Plug 'tpope/vim-fugitive'
+Plug 'shushcat/vim-minimd'
+Plug 'dkarter/bullets.vim'
+" Plug 'masukomi/vim-markdown-folding'
+" Plug 'godlygeek/tabular'
+" Plug 'gabrielelana/vim-markdown'
+" Plug 'tpope/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
+" Plug 'SidOfc/mkdx'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -58,14 +65,15 @@ colorscheme gruvbox
 " inoremap jk <Esc>
 " cnoremap jk <Esc>
 " vnoremap jk <Esc>
-nnoremap <Leader>g :Goyo<CR>
+noremap <Leader>g :Goyo<CR>
 noremap <Leader>w :set wrap!<CR>
+noremap <C-h> :History<CR>
 noremap <C-p> :Files<CR>
 noremap <C-h> :History<CR>
 
 " Configure for Python development
 let g:pymode_run_bind='<F5>'
-imap <F5> <Esc>:w<CR>:!clear;python3 %<CR>
+noremap <F5> <Esc>:w<CR>:!python3 %<CR>
 
 " HARD MODE
 " no <down> <Nop>
@@ -104,21 +112,21 @@ cnoremap <Esc><C-B>	<S-Left>
 " forward one word
 cnoremap <Esc><C-F>	<S-Right>
 
-" ---------------------
 " AUTOCOMMANDS
 " ---------------------
- au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=150}
- au TextYankPost * silent! lua vim.highlight.on_yank()
+" NOTE: Don't know why this not work with my NeoVim
+" augroup highlight_yank
+"     autocmd!
+"     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
+" augroup END
 
-
-" ------------------------- 
 " PLUG-INS CONFIGURATION
 " ------------------------- 
 let g:vimwiki_list = [{ 'path': '~/notes/',
        \ 'syntax':'markdown', 'ext': '.md' }]
 
 
-" let g:highlightedyank_highlight_duration = 300
+let g:highlightedyank_highlight_duration = 250
 
 augroup vimwiki
 	autocmd!
@@ -187,3 +195,35 @@ endif
 
  autocmd! User GoyoEnter nested call <SID>goyo_enter()
  autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+" Configure for Python
+" ---------------------
+au BufRead *.py
+    \ set expandtab       |" replace tabs with spaces
+    \ set autoindent      |" copy indent when starting a new line
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4au BufNewFile,BufRead *.py
+    \ set expandtab       |" replace tabs with spaces
+    \ set autoindent      |" copy indent when starting a new line
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+
+" Config Markdown
+" -------------------
+" let g:vim_markdown_no_default_key_mappings = 1
+" let g:markdown_enable_spell_checking = 0
+" let g:markdown_enable_folding = 1
+" let g:markdown_enable_conceal = 1
+" nmap <Tab> <Plug>Markdown_MoveToNextHeader
+" nmap <S-Tab> <Plug>Markdown_MoveToPreviousHeader
+
+" mkdx.vim 
+" -------------------
+" let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
+"                         \ 'enter': { 'shift': 1 },
+"                         \ 'links': { 'external': { 'enable': 1 } },
+"                         \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
+"                         \ 'fold': { 'enable': 1 } }
+"
