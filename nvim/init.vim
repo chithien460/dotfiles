@@ -8,6 +8,7 @@ set nowrap
 set hidden
 set nu rnu
 set incsearch
+set nohls
 set ignorecase
 set smartcase
 set autoindent
@@ -38,7 +39,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'tpope/vim-fugitive'
-Plug 'machakann/vim-highlightedyank' 
+" Plug 'machakann/vim-highlightedyank' 
 Plug 'morhetz/gruvbox'
 Plug 'shushcat/vim-minimd'
 Plug 'dkarter/bullets.vim'
@@ -72,22 +73,6 @@ noremap <C-p> :Files<CR>
 let g:pymode_run_bind='<F5>'
 noremap <F5> <Esc>:w<CR>:!python3 %<CR>
 
-" HARD MODE
-" no <down> <Nop>
-" no <left> <Nop>
-" no <right> <Nop>
-" no <up> <Nop>
-
-" ino <down> <Nop>
-" ino <left> <Nop>
-" ino <right> <Nop>
-" ino <up> <Nop>
-
-" vno <down> <Nop>
-" vno <left> <Nop>
-" vno <right> <Nop>
-" vno <up> <Nop>
-
 " For Emacs-style editing on the command-line: >
 " --------------------------------------------
 " start of line
@@ -112,6 +97,7 @@ cnoremap <Esc><C-F>	<S-Right>
 " AUTOCOMMANDS
 " ---------------------
 " NOTE: Don't know why this not work with my NeoVim
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
 " augroup highlight_yank
 "     autocmd!
 "     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
@@ -125,6 +111,7 @@ let g:vimwiki_list = [{ 'path': '~/notes/',
 
 let g:highlightedyank_highlight_duration = 250
 
+" Vim-wiki auto-sync
 augroup vimwiki
 	autocmd!
 	autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
