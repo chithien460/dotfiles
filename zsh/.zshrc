@@ -39,7 +39,7 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+# eval "$(dircolors -b)"
 #zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -80,8 +80,8 @@ function ns {
 
 
 # ALIAS
-alias ls='ls --color=auto'
-alias la='ls -lah --color=auto'
+# alias ls='ls --color=auto'
+# alias la='ls -lah --color=auto'
 alias clip='xclip -sel c'
 
 # VARIABLES

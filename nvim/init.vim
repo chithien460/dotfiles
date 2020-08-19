@@ -17,6 +17,7 @@ set clipboard+=unnamedplus
 set shell=/usr/bin/zsh
 set pastetoggle=<F2>
 
+set nohls
 set encoding=UTF-8
 set mouse=a 
 set tabstop=4 
@@ -65,10 +66,19 @@ colorscheme gruvbox
 " inoremap jk <Esc>
 " cnoremap jk <Esc>
 " vnoremap jk <Esc>
-noremap <Leader>g :Goyo<CR>
+" ---------------------------
+" from defauls.vim
+" Don't use Ex mode, use Q for formatting.
+" Revert with ":unmap Q".
+map Q gq
+inoremap <C-U> <C-G>u<C-U>
+
+
+nnoremap <Leader>g :Goyo<CR>
 noremap <Leader>w :set wrap!<CR>
 noremap <C-h> :History<CR>
 noremap <C-p> :Files<CR>
+noremap <C-h> :History<CR>
 
 " Configure for Python development
 let g:pymode_run_bind='<F5>'
