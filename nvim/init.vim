@@ -12,6 +12,7 @@ set incsearch
 set nohls
 set ignorecase
 set smartcase
+set wildmenu
 set autoindent
 set clipboard+=unnamedplus
 set shell=/usr/bin/zsh
