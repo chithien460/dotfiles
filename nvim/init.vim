@@ -28,7 +28,8 @@ set shiftwidth=4
 let mapleader = " "
 
 
-" vim-plug install
+" Plug-Ins Installation via vim-plug
+" -------------------------------
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -43,6 +44,7 @@ Plug 'junegunn/goyo.vim'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'tpope/vim-fugitive'
 " Plug 'machakann/vim-highlightedyank' 
+Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'morhetz/gruvbox'
 Plug 'shushcat/vim-minimd'
 Plug 'dkarter/bullets.vim'

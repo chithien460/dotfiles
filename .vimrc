@@ -1,4 +1,3 @@
-inoremap jk <ESC> 
 " Don't try to be vi compatible
 set nocompatible
 
@@ -34,9 +33,6 @@ set clipboard=unnamedplus
 
 " For plugins to load correctly
 filetype plugin indent on
-
-" Security
-set modelines=0
 
 " Show line numbers
 set number rnu

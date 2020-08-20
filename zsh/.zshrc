@@ -80,8 +80,8 @@ function ns {
 
 
 # ALIAS
-# alias ls='ls --color=auto'
-# alias la='ls -lah --color=auto'
+alias ls='ls --color=auto'
+alias la='ls -lah --color=auto'
 alias clip='xclip -sel c'
 
 # VARIABLES
