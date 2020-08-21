@@ -2,7 +2,7 @@
 
 set -e
 
-CONFIG_SUFFIX="ubuntu.install.conf.yaml"
+CONFIG_SUFFIX=".install.conf.yaml"
 DOTBOT_DIR="dotbot"
 
 DOTBOT_BIN="bin/dotbot"
