@@ -2,9 +2,9 @@
 
 set -e
 
-CONFIG_SUFFIX=".install.conf.yaml"
+CONFIG_SUFFIX="install.conf.yaml"
 DOTBOT_DIR="dotbot"
-
+PKG_CONFIG="pkg.ubuntu.conf.yaml"
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -35,9 +35,9 @@ _dotbot_do_links() {
 
 	# OS additions.
 	if [[ $OSTYPE == linux* ]]; then
-		"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "ubuntu${CONFIG_SUFFIX}"
+		"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG_SUFFIX}"
 	elif [[ $OSTYPE == darwin* ]]; then
-		"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "macos${CONFIG_SUFFIX}"
+		"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG_SUFFIX}"
 	fi
 	set +e
 
@@ -121,4 +121,5 @@ _hello_dude
 #_install_dependencies
 _init_submodules
 _dotbot_do_links
+# _dotbot_pkg_install
 _configure_nvim
