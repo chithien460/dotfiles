@@ -33,23 +33,6 @@
 
     # - [nvim +PlugInstall +qall, Installing NeoVim plugins with vim-plug]
 
-    #- description: change shells
-    #  command: sudo chsh -s $(which zsh)
-    #  stdout: true
-    #  stdin: true
-    #
-    #    - description: install homebrew
-    #      command: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    #      stdout: true
-    #      stdin: true
-    #    - description: install homebrew formulas
-    #      command: bash -c "cd mac && brew bundle"
-    #      stdout: true
-    #      stdin: true
-    #    - description: install pip2 modules
-    #      command: bash -c "pip2 install -r pip/pip2-requirements.txt"
-    #      stdout: true
-    #      stdin: true
     #    - description: install pip3 modules
     #      command: bash -c "pip3 install -r pip/pip3-requirements.txt"
     #      stdout: true
