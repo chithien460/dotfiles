@@ -42,7 +42,7 @@ call plug#begin()
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " Plug 'machakann/vim-highlightedyank' 
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'morhetz/gruvbox'
@@ -66,17 +66,7 @@ colorscheme gruvbox
 " ------------------------------ 
 " KEY BIDDINGS
 " ------------------------------ 
-" inoremap jk <Esc>
-" cnoremap jk <Esc>
-" vnoremap jk <Esc>
-" ---------------------------
-" from defauls.vim
-" Don't use Ex mode, use Q for formatting.
-" Revert with ":unmap Q".
-map Q gq
 inoremap <C-U> <C-G>u<C-U>
-
-
 nnoremap <Leader>g :Goyo<CR>
 noremap <Leader>w :set wrap!<CR>
 noremap <C-h> :History<CR>
@@ -119,14 +109,13 @@ cnoremap <Esc><C-F>	<S-Right>
 
 " PLUG-INS CONFIGURATION
 " ------------------------- 
-let g:vimwiki_list = [{ 'path': '~/notes/',
-       \ 'syntax':'markdown', 'ext': '.md' }]
 
-
+let g:netrw_preview = 1
+let g:vimwiki_list = [{ 'path': '~/notes/', 'syntax':'markdown', 'ext': '.md' }]
 let g:highlightedyank_highlight_duration = 250
 
-" Vim-wiki auto-sync
-augroup vimwiki
+" auto-sync notes
+augroup auto_sync_notes
 	autocmd!
 	autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
 augroup END
