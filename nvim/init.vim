@@ -72,6 +72,7 @@ nnoremap <Leader>g :Goyo<CR>
 noremap <Leader>w :set wrap!<CR>
 noremap <C-h> :History<CR>
 noremap <C-p> :Files<CR>
+noremap <C-g> :Rg<CR>
 noremap <C-h> :History<CR>
 
 " Configure for Python development
@@ -215,3 +216,4 @@ au BufRead *.py
 "                         \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
 "                         \ 'fold': { 'enable': 1 } }
 "
+
