@@ -57,6 +57,7 @@ Plug 'dkarter/bullets.vim'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'lilydjwg/fcitx.vim'
 
 call plug#end()
 
@@ -110,35 +111,34 @@ cnoremap <Esc><C-F>	<S-Right>
 
 " AUTOCOMMANDS
 " ---------------------
-" NOTE: Don't know why this not work with my NeoVim
+" au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=250, on_visual=false}
+
+augroup highlight_yank
+    autocmd!
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
-" augroup highlight_yank
-"     autocmd!
-"     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
-" augroup END
+    " autocmd TextYankPost * lua require'vim.highlight'.on_yank("IncSearch", 1000)
+augroup END
 
 " PLUG-INS CONFIGURATION
 " ------------------------- 
-let g:vimwiki_list = [{ 'path': '~/notes/',
-       \ 'syntax':'markdown', 'ext': '.md' }]
-
+let g:vimwiki_list = [{ 'path': '~/notes/', 'syntax':'markdown', 'ext': '.md' }]
 
 let g:highlightedyank_highlight_duration = 250
 
 " Vim-wiki auto-sync
-augroup vimwiki
-	autocmd!
-	autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
-augroup END
+" augroup vimwiki
+" 	autocmd!
+" 	autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
+" augroup END
 
 " WSL yank support
-let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
-if executable(s:clip)
-    augroup WSLYank
-            autocmd!
-            autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
-    augroup END
-endif
+" let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
+" if executable(s:clip)
+"     augroup WSLYank
+"             autocmd!
+"             autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+"     augroup END
+" endif
 
 " ----------------------------------------------------------------------------
 "  goyo.vim + limelight.vim
