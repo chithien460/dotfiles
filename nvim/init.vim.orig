@@ -9,8 +9,10 @@ set nowrap
 set hidden
 set nu rnu
 set incsearch
+set nohls
 set ignorecase
 set smartcase
+set wildmenu
 set autoindent
 set clipboard+=unnamedplus
 set shell=/usr/bin/zsh
@@ -26,7 +28,8 @@ set shiftwidth=4
 let mapleader = " "
 
 
-" vim-plug install
+" Plug-Ins Installation via vim-plug
+" -------------------------------
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -35,19 +38,13 @@ endif
 
 call plug#begin()
 
-<<<<<<< HEAD
-Plug 'shushcat/vim-minimd'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'machakann/vim-highlightedyank' 
-Plug 'junegunn/gogo.vim'
-=======
 " Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'tpope/vim-fugitive'
-Plug 'machakann/vim-highlightedyank' 
->>>>>>> 393ad0654fd22ba083536c04039d05d3a4ffbc69
+Plug 'tpope/vim-fugitive'
+" Plug 'machakann/vim-highlightedyank' 
+Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'morhetz/gruvbox'
 Plug 'shushcat/vim-minimd'
 Plug 'dkarter/bullets.vim'
@@ -60,6 +57,7 @@ Plug 'dkarter/bullets.vim'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'lilydjwg/fcitx.vim'
 
 call plug#end()
 
@@ -69,14 +67,8 @@ colorscheme gruvbox
 " ------------------------------ 
 " KEY BIDDINGS
 " ------------------------------ 
-" inoremap jk <Esc>
-" cnoremap jk <Esc>
-" vnoremap jk <Esc>
-<<<<<<< HEAD
+inoremap <C-U> <C-G>u<C-U>
 nnoremap <Leader>g :Goyo<CR>
-=======
-noremap <Leader>g :Goyo<CR>
->>>>>>> 393ad0654fd22ba083536c04039d05d3a4ffbc69
 noremap <Leader>w :set wrap!<CR>
 noremap <C-h> :History<CR>
 noremap <C-p> :Files<CR>
@@ -85,22 +77,6 @@ noremap <C-h> :History<CR>
 " Configure for Python development
 let g:pymode_run_bind='<F5>'
 noremap <F5> <Esc>:w<CR>:!python3 %<CR>
-
-" HARD MODE
-" no <down> <Nop>
-" no <left> <Nop>
-" no <right> <Nop>
-" no <up> <Nop>
-
-" ino <down> <Nop>
-" ino <left> <Nop>
-" ino <right> <Nop>
-" ino <up> <Nop>
-
-" vno <down> <Nop>
-" vno <left> <Nop>
-" vno <right> <Nop>
-" vno <up> <Nop>
 
 " For Emacs-style editing on the command-line: >
 " --------------------------------------------
@@ -125,33 +101,47 @@ cnoremap <Esc><C-F>	<S-Right>
 
 " AUTOCOMMANDS
 " ---------------------
-" NOTE: Don't know why this not work with my NeoVim
-" augroup highlight_yank
-"     autocmd!
-"     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
-" augroup END
+" au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=250, on_visual=false}
+
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
+    " autocmd TextYankPost * lua require'vim.highlight'.on_yank("IncSearch", 1000)
+augroup END
 
 " PLUG-INS CONFIGURATION
 " ------------------------- 
-let g:vimwiki_list = [{ 'path': '~/notes/',
-       \ 'syntax':'markdown', 'ext': '.md' }]
+<<<<<<< HEAD
+=======
+let g:vimwiki_list = [{ 'path': '~/notes/', 'syntax':'markdown', 'ext': '.md' }]
+>>>>>>> 57daef81c7e9949e95327f6cfefc7b8db35a5969
 
-
+let g:netrw_preview = 1
+let g:vimwiki_list = [{ 'path': '~/notes/', 'syntax':'markdown', 'ext': '.md' }]
 let g:highlightedyank_highlight_duration = 250
 
-augroup vimwiki
+<<<<<<< HEAD
+" auto-sync notes
+augroup auto_sync_notes
 	autocmd!
 	autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
 augroup END
+=======
+" Vim-wiki auto-sync
+" augroup vimwiki
+" 	autocmd!
+" 	autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
+" augroup END
+>>>>>>> 57daef81c7e9949e95327f6cfefc7b8db35a5969
 
 " WSL yank support
-let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
-if executable(s:clip)
-    augroup WSLYank
-            autocmd!
-            autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
-    augroup END
-endif
+" let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
+" if executable(s:clip)
+"     augroup WSLYank
+"             autocmd!
+"             autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+"     augroup END
+" endif
 
 " ----------------------------------------------------------------------------
 "  goyo.vim + limelight.vim

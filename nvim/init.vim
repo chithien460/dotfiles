@@ -57,6 +57,7 @@ Plug 'dkarter/bullets.vim'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'lilydjwg/fcitx.vim'
 
 call plug#end()
 
