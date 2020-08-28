@@ -7,9 +7,9 @@ syntax on
 set modeline
 set nowrap
 set hidden
-set nu rnu
+set number relativenumber
 set incsearch
-set nohls
+set hlsearch
 set ignorecase
 set smartcase
 set wildmenu
@@ -18,7 +18,6 @@ set clipboard+=unnamedplus
 set shell=/usr/bin/zsh
 set pastetoggle=<F2>
 
-set nohls
 set encoding=UTF-8
 set mouse=a 
 set tabstop=4 
@@ -29,7 +28,7 @@ set undodir=~/.vim/undodir
 set undofile
 
 let mapleader = " "
-
+let notesdir= "~/notes"
 
 " Plug-Ins Installation via vim-plug
 " -------------------------------
@@ -76,8 +75,8 @@ nnoremap <Leader>g :Goyo<CR>
 noremap <Leader>w :set wrap!<CR>
 noremap <C-h> :History<CR>
 noremap <C-p> :Files<CR>
-noremap <C-g> :Rg<CR>
 noremap <C-h> :History<CR>
+noremap <C-/> :Rg<CR>
 
 " Configure for Python development
 let g:pymode_run_bind='<F5>'
@@ -116,6 +115,11 @@ autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1
 "     autocmd!
 "     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
 " augroup END
+
+augroup TerminalStuff
+	autocmd!
+	autocmd TermOpen * setlocal nonumber norelativenumber
+augroup END
 
 " PLUG-INS CONFIGURATION
 " ------------------------- 
