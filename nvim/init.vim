@@ -44,7 +44,7 @@ Plug 'junegunn/goyo.vim'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 " Plug 'machakann/vim-highlightedyank' 
-Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
+" Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'morhetz/gruvbox'
 Plug 'shushcat/vim-minimd'
 Plug 'dkarter/bullets.vim'
@@ -74,6 +74,7 @@ noremap <C-h> :History<CR>
 noremap <C-p> :Files<CR>
 noremap <C-g> :Rg<CR>
 noremap <C-h> :History<CR>
+noremap <C-n> :lcd ~/notes<CR>:Rg<CR>
 
 " Configure for Python development
 let g:pymode_run_bind='<F5>'
@@ -121,6 +122,17 @@ augroup auto_sync_notes
 	autocmd!
 	autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
 augroup END
+
+" Sync notes after entering Vim
+" augroup pull_notes
+" 	autocmd!
+" 	autocmd VimEnter ~/notes/* !cd ~/notes;git pull origin master
+" augroup END
+
+" NoteSync
+function! s:NoteSync()
+	!cd ~/notes;git pull origin master
+ endfunction
 
 " WSL yank support
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
@@ -198,22 +210,4 @@ au BufRead *.py
     \ set tabstop=4
     \ set softtabstop=4
     \ set shiftwidth=4
-
-" Config Markdown
-" -------------------
-" let g:vim_markdown_no_default_key_mappings = 1
-" let g:markdown_enable_spell_checking = 0
-" let g:markdown_enable_folding = 1
-" let g:markdown_enable_conceal = 1
-" nmap <Tab> <Plug>Markdown_MoveToNextHeader
-" nmap <S-Tab> <Plug>Markdown_MoveToPreviousHeader
-
-" mkdx.vim 
-" -------------------
-" let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
-"                         \ 'enter': { 'shift': 1 },
-"                         \ 'links': { 'external': { 'enable': 1 } },
-"                         \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
-"                         \ 'fold': { 'enable': 1 } }
-"
 
