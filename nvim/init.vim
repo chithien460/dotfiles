@@ -7,9 +7,9 @@ syntax on
 set modeline
 set nowrap
 set hidden
-set nu rnu
+set number relativenumber
 set incsearch
-set nohls
+set hlsearch
 set ignorecase
 set smartcase
 set wildmenu
@@ -18,15 +18,17 @@ set clipboard+=unnamedplus
 set shell=/usr/bin/zsh
 set pastetoggle=<F2>
 
-set nohls
 set encoding=UTF-8
 set mouse=a 
 set tabstop=4 
 set softtabstop=0
 set shiftwidth=4
 
-let mapleader = " "
+set undodir=~/.vim/undodir
+set undofile
 
+let mapleader = " "
+let notesdir= "~/notes"
 
 " Plug-Ins Installation via vim-plug
 " -------------------------------
@@ -47,17 +49,18 @@ Plug 'tpope/vim-fugitive'
 " Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'morhetz/gruvbox'
 Plug 'shushcat/vim-minimd'
+Plug 'rlue/vim-barbaric'
 Plug 'dkarter/bullets.vim'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " Plug 'masukomi/vim-markdown-folding'
 " Plug 'godlygeek/tabular'
 " Plug 'gabrielelana/vim-markdown'
 " Plug 'tpope/vim-markdown'
 " Plug 'plasticboy/vim-markdown'
 " Plug 'SidOfc/mkdx'
-Plug 'tpope/vim-commentary'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'lilydjwg/fcitx.vim'
+" Plug 'lilydjwg/fcitx.vim'
 
 call plug#end()
 
@@ -72,9 +75,9 @@ nnoremap <Leader>g :Goyo<CR>
 noremap <Leader>w :set wrap!<CR>
 noremap <C-h> :History<CR>
 noremap <C-p> :Files<CR>
-noremap <C-g> :Rg<CR>
 noremap <C-h> :History<CR>
 noremap <C-n> :lcd ~/notes<CR>:Rg<CR>
+noremap <C-/> :Rg<CR>
 
 " Configure for Python development
 let g:pymode_run_bind='<F5>'
@@ -100,15 +103,24 @@ cnoremap <C-P>		<Up>
 cnoremap <Esc><C-B>	<S-Left>
 " forward one word
 cnoremap <Esc><C-F>	<S-Right>
+" Readline in insertmode
+inoremap <c-a> <c-o>0
+inoremap <c-e> <c-o>$
 
 " AUTOCOMMANDS
 " ---------------------
 " NOTE: Don't know why this not work with my NeoVim
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
+autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
+
 " augroup highlight_yank
 "     autocmd!
 "     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
 " augroup END
+
+augroup TerminalStuff
+	autocmd!
+	autocmd TermOpen * setlocal nonumber norelativenumber
+augroup END
 
 " PLUG-INS CONFIGURATION
 " ------------------------- 
