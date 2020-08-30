@@ -76,7 +76,7 @@ noremap <Leader>w :set wrap!<CR>
 noremap <C-h> :History<CR>
 noremap <C-p> :Files<CR>
 noremap <C-h> :History<CR>
-noremap <C-n> :lcd ~/notes<CR>:Rg<CR>
+noremap <Leader>n :lcd ~/notes<CR>:Rg<CR>
 noremap <C-L> :noh<CR><C-L>
 noremap <C-g> :Rg<CR>
 
@@ -223,4 +223,3 @@ au BufRead *.py
     \ set tabstop=4
     \ set softtabstop=4
     \ set shiftwidth=4
-

@@ -79,13 +79,6 @@ if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
 
-function ns {
-	cd ~/notes
-	git add .
-	git commit -a -m "updated on `date +'%Y%m%d_%H:%M'`"
-	git push origin master
-}
-
 
 # ALIAS
 
@@ -130,3 +123,27 @@ fi
 if [ -f ~/.zshrc_local_after ]; then
     source ~/.zshrc_local_after
 fi
+
+# my Note function
+note () {
+  local notes_dir="$HOME/Dropbox/Apps/Joplin/"
+  case "$1" in
+    c)
+      cd "$notes_dir"
+      ;;
+    l)
+      ls "$notes_dir"
+      ;;
+    p)
+      pushd "$notes_dir"
+      msg="Regenerated at $(date -u '+%Y-%m-%d %H:%M:%S') UTC"
+      git add .
+      git commit -m "$msg"
+      git push origin master
+      popd
+      ;;
+    *)
+      vim "$notes_dir/$1"
+  esac
+}
+
