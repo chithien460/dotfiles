@@ -70,6 +70,7 @@ colorscheme gruvbox
 " ------------------------------ 
 " KEY BIDDINGS
 " ------------------------------ 
+map Y y$"
 inoremap <C-U> <C-G>u<C-U>
 nnoremap <Leader>g :Goyo<CR>
 noremap <Leader>w :set wrap!<CR>
