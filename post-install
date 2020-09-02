@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-(
-    "${PWD}/dependencies/fzf/install" --all --no-bash --no-fish --64
-)
-
