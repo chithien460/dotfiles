@@ -41,19 +41,19 @@ endif
 call plug#begin()
 
 " Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
-Plug 'junegunn/limelight.vim'
-Plug 'junegunn/goyo.vim'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tpope/vim-fugitive'
-" Plug 'machakann/vim-highlightedyank' 
+Plug 'machakann/vim-highlightedyank' 
 " Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'morhetz/gruvbox'
-Plug 'shushcat/vim-minimd'
+" Plug 'shushcat/vim-minimd'
 Plug 'rlue/vim-barbaric'
 Plug 'dkarter/bullets.vim'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
 " Plug 'masukomi/vim-markdown-folding'
 " Plug 'godlygeek/tabular'
 " Plug 'gabrielelana/vim-markdown'
@@ -112,8 +112,6 @@ inoremap <c-e> <c-o>$
 " AUTOCOMMANDS
 " ---------------------
 " NOTE: Don't know why this not work with my NeoVim
-autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
-
 " augroup highlight_yank
 "     autocmd!
 "     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
