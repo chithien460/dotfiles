@@ -1,7 +1,7 @@
 # dotfiles
 Chi Thien's dotfiles
 
-# Prerequisites
+## Prerequisites
 ## Copy ssh-keys to new machine
 
 ```
@@ -10,20 +10,21 @@ chmod 644 ~/.ssh/known_hosts
 chmod 755 ~/.ssh
 ```
 
-# Dependencies that need to be installed before installing dotfiles
+## Dependencies that need to be installed before installing dotfiles
 
-## Git
+### Git
 
 ```
 sudo apt install git
 ```
 
-## Vim
+### Vim
 
-``` sudo apt install nvim
+```
+sudo apt install nvim
 ```
 
-## Zsh
+### Zsh
 
 ```
 sudo apt install zsh
