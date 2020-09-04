@@ -30,12 +30,12 @@ syntax on
 
 set clipboard=unnamedplus
 
-
 " For plugins to load correctly
 filetype plugin indent on
 
 " Show line numbers
 set number rnu
+set wildmenu
 
 " Show file stats
 set ruler
@@ -45,6 +45,7 @@ set visualbell
 
 " Encoding
 set encoding=utf-8
+set modeline
 
 " Whitespace
 set wrap
@@ -79,7 +80,6 @@ set incsearch
 set ignorecase
 set smartcase
 set showmatch
-map <leader><space> :let @/=''<cr> " clear search
 
 " Textmate holdouts
 
@@ -93,11 +93,6 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 
 
 
-"set background=dark
+" set background=dark
+highlight LineNr term=bold ctermfg=DarkGrey 
 
-
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-
-set guioptions-=m  "menu bar
-set guioptions-=T  "toolbar
-set guioptions-=r  "scrollbar
