@@ -54,6 +54,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'dbeniamine/cheat.sh-vim'
 " Plug 'liuchengxu/vim-which-key'
 " Plug 'masukomi/vim-markdown-folding'
 " Plug 'godlygeek/tabular'
