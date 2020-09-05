@@ -133,7 +133,7 @@ fi
 
 # my Note function
 note () {
-  local notes_dir="$HOME/Dropbox/Apps/Joplin/"
+  local notes_dir="$HOME/notes/"
   case "$1" in
     c)
       cd "$notes_dir"

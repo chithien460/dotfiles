@@ -134,7 +134,8 @@ let g:highlightedyank_highlight_duration = 250
 " auto-sync notes
 augroup auto_sync_notes
 	autocmd!
-	autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
+	autocmd BufUnload ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
+	" autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
 augroup END
 
 " Sync notes after entering Vim
@@ -143,10 +144,6 @@ augroup END
 " 	autocmd VimEnter ~/notes/* !cd ~/notes;git pull origin master
 " augroup END
 
-" NoteSync
-function! s:NoteSync()
-	!cd ~/notes;git pull origin master
- endfunction
 
 " WSL yank support
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
