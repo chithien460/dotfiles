@@ -58,6 +58,9 @@ set softtabstop=2
 set expandtab
 set noshiftround
 
+set undofile
+set undodir='~/.vim/undodir'
+
 " Cursor motion
 set scrolloff=3
 set backspace=indent,eol,start

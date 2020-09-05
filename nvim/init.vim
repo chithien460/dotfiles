@@ -79,7 +79,7 @@ noremap <Leader>w :set wrap!<CR>
 noremap <C-h> :History<CR>
 noremap <C-p> :Files<CR>
 noremap <C-h> :History<CR>
-noremap <Leader>n :lcd ~/notes<CR>:Rg<CR>
+noremap <Leader>no :lcd ~/notes<CR>:Rg<CR>
 noremap <C-l> :noh<CR><C-L>
 noremap <Leader>/ :Rg<CR>
 
@@ -134,7 +134,7 @@ let g:highlightedyank_highlight_duration = 250
 " auto-sync notes
 augroup auto_sync_notes
 	autocmd!
-	autocmd BufUnload ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
+	autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
 	" autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
 augroup END
 
@@ -211,11 +211,6 @@ endif
 " Configure for Python
 " ---------------------
 au BufRead *.py
-    \ set expandtab       |" replace tabs with spaces
-    \ set autoindent      |" copy indent when starting a new line
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4au BufNewFile,BufRead *.py
     \ set expandtab       |" replace tabs with spaces
     \ set autoindent      |" copy indent when starting a new line
     \ set tabstop=4
