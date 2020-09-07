@@ -135,16 +135,16 @@ fi
 note () {
   local notes_dir="$HOME/notes/"
   case "$1" in
-    c)
+    c | cd | dir)
       cd "$notes_dir"
       ;;
-    l)
+    sync)
       pushd "$notes_dir"
       git pull origin master
       popd
-      ls "$notes_dir"
+      # ls "$notes_dir"
       ;;
-    p)
+    p | push)
       pushd "$notes_dir"
       msg="Regenerated at $(date -u '+%Y-%m-%d %H:%M:%S') UTC"
       git add .
@@ -152,12 +152,19 @@ note () {
       git push origin master
       popd
       ;;
-	n) 
+	n | new) 
 	  neuron new -e
 	  ;;
-    *)
-      # vim "$notes_dir/$1"
-	  neuron query "$1"
+	l | list) 
+	  neuron search -e
+	  ;;
+    a | search)
+	  neuron search -a -e
+	  ;;
+	# TODO: how to search note directly??
+	*)
+	  neuron search -e
+	  ;;
   esac
 }
 

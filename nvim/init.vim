@@ -4,6 +4,7 @@ set nocompatible
 filetype plugin indent on
 syntax on
 
+
 set modeline
 set nowrap
 set hidden
@@ -47,7 +48,7 @@ Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'morhetz/gruvbox'
 " Plug 'shushcat/vim-minimd'
 " Plug 'rlue/vim-barbaric'
-Plug 'dkarter/bullets.vim'
+" Plug 'dkarter/bullets.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -57,9 +58,9 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'dbeniamine/cheat.sh-vim'
 Plug 'ihsanturk/neuron.vim'
+Plug 'SidOfc/mkdx'
 " Plug 'liuchengxu/vim-which-key'
 " Plug 'plasticboy/vim-markdown' 
-Plug 'SidOfc/mkdx'
 
 call plug#end()
 
@@ -106,6 +107,7 @@ cnoremap <Esc><C-F>	<S-Right>
 " Readline in insertmode
 inoremap <c-a> <c-o>0
 inoremap <c-e> <c-o>$
+
 
 " AUTOCOMMANDS
 " ---------------------
