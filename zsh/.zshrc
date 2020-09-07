@@ -139,6 +139,9 @@ note () {
       cd "$notes_dir"
       ;;
     l)
+      pushd "$notes_dir"
+      git pull origin master
+      popd
       ls "$notes_dir"
       ;;
     p)
@@ -149,8 +152,14 @@ note () {
       git push origin master
       popd
       ;;
+	n) 
+	  neuron new -e
+	  ;;
     *)
-      vim "$notes_dir/$1"
+      # vim "$notes_dir/$1"
+	  neuron query "$1"
   esac
 }
 
+
+if [ -e /home/chithien/.nix-profile/etc/profile.d/nix.sh ]; then . /home/chithien/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

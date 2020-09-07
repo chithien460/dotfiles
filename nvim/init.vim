@@ -40,10 +40,10 @@ endif
 
 call plug#begin()
 
-" Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+" Plug 'vimwiki/vimwiki'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'machakann/vim-highlightedyank' 
-" Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
+Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'morhetz/gruvbox'
 " Plug 'shushcat/vim-minimd'
 " Plug 'rlue/vim-barbaric'
@@ -52,17 +52,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'BurntSushi/ripgrep'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'dbeniamine/cheat.sh-vim'
+Plug 'ihsanturk/neuron.vim'
 " Plug 'liuchengxu/vim-which-key'
-" Plug 'masukomi/vim-markdown-folding'
-" Plug 'godlygeek/tabular'
-" Plug 'gabrielelana/vim-markdown'
-" Plug 'tpope/vim-markdown'
-" Plug 'plasticboy/vim-markdown'
-" Plug 'SidOfc/mkdx'
-" Plug 'lilydjwg/fcitx.vim'
+" Plug 'plasticboy/vim-markdown' 
+Plug 'SidOfc/mkdx'
 
 call plug#end()
 
@@ -81,7 +78,6 @@ noremap <C-p> :Files<CR>
 noremap <C-h> :History<CR>
 noremap <Leader>no :lcd ~/notes<CR>:Rg<CR>
 noremap <C-l> :noh<CR><C-L>
-noremap <Leader>/ :Rg<CR>
 
 " Configure for Python development
 let g:pymode_run_bind='<F5>'
@@ -130,13 +126,19 @@ augroup END
 let g:netrw_preview = 1
 let g:vimwiki_list = [{ 'path': '~/notes/', 'syntax':'markdown', 'ext': '.md' }]
 let g:highlightedyank_highlight_duration = 250
+let g:vim_markdown_folding_disabled = 1
+set conceallevel=2
 
+let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
+                        \ 'enter': { 'shift': 1 },
+                        \ 'links': { 'external': { 'enable': 1 } },
+                        \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
+                        \ 'fold': { 'enable': 1 } }
 " auto-sync notes
-augroup auto_sync_notes
-	autocmd!
-	autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
-	" autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%"; git push origin master
-augroup END
+" augroup auto_sync_notes
+" 	autocmd!
+" 	autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%";git push origin master
+" augroup END
 
 " Sync notes after entering Vim
 " augroup pull_notes
