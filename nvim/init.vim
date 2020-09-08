@@ -102,8 +102,11 @@ cnoremap <C-N>		<Down>
 cnoremap <C-P>		<Up>
 " back one word
 cnoremap <Esc><C-B>	<S-Left>
+cnoremap <M-b> <S-Left>
 " forward one word
 cnoremap <Esc><C-F>	<S-Right>
+cnoremap <M-f> <S-Right>
+
 " Readline in insertmode
 inoremap <c-a> <c-o>0
 inoremap <c-e> <c-o>$
@@ -135,7 +138,8 @@ let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
                         \ 'enter': { 'shift': 1 },
                         \ 'links': { 'external': { 'enable': 1 } },
                         \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
-                        \ 'fold': { 'enable': 1 } }
+                        \ 'fold': { 'enable': 1 },
+						\ 'tokens': { 'list': '*' } }
 " auto-sync notes
 " augroup auto_sync_notes
 " 	autocmd!
