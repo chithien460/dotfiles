@@ -134,6 +134,15 @@ note () {
     a | search)
 	  neuron search -a -e
 	  ;;
+	i | inbox)
+	  vim $notes_dir/inbox.md
+      pushd "$notes_dir"
+      msg="Regenerated at $(date -u '+%Y-%m-%d %H:%M:%S') UTC"
+      git add .
+      git commit -m "$msg"
+      git push origin master
+      popd
+	  ;; 
 	# TODO: how to search note directly??
 	*)
 	  neuron search -e
