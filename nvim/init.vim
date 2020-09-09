@@ -69,7 +69,7 @@ call plug#end()
 colorscheme gruvbox
 
 " ------------------------------ 
-" KEY BIDDINGS
+" KEY BIDDINGS / KEY MAPPINGS
 " ------------------------------ 
 map Y y$"
 inoremap <C-U> <C-G>u<C-U>
@@ -77,10 +77,9 @@ nnoremap <Leader>g :Goyo<CR>
 noremap <Leader>w :set wrap!<CR>
 noremap <C-h> :History<CR>
 noremap <C-p> :Files<CR>
-noremap <C-h> :History<CR>
 noremap <Leader>no :lcd ~/notes<CR>:Rg<CR>
 noremap <C-l> :noh<CR><C-L>
-
+noremap <C-/> :Rg<CR>
 " Configure for Python development
 let g:pymode_run_bind='<F5>'
 noremap <F5> <Esc>:w<CR>:!python3 %<CR>
@@ -113,6 +112,7 @@ inoremap <c-a> <c-o>0
 inoremap <c-e> <c-o>$
 
 
+
 " AUTOCOMMANDS
 " ---------------------
 " NOTE: Don't know why this not work with my NeoVim
@@ -136,11 +136,16 @@ let g:vim_markdown_folding_disabled = 1
 set conceallevel=2
 
 let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
-                        \ 'enter': { 'shift': 1 },
+                        \ 'enter': { 'shift': 0 },
                         \ 'links': { 'external': { 'enable': 1 } },
                         \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
-                        \ 'fold': { 'enable': 1 },
-						\ 'tokens': { 'list': '*' } }
+                        \ 'fold': { 'enable': 0 },
+						\ 'tokens': { 'list': '*' },
+						\ 'gf_on_steroids': 1 }
+
+nmap <Plug> <Plug>(mkdx-text-italic-n)
+vmap <Plug> <Plug>(mkdx-text-italic-v)
+
 " auto-sync notes
 " augroup auto_sync_notes
 " 	autocmd!
@@ -225,3 +230,8 @@ au BufRead *.py
     \ set tabstop=4
     \ set softtabstop=4
     \ set shiftwidth=4
+
+" command! -bang -nargs=* Find
+"   \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+"
+" command! -bang -nargs=* Find call fzf#vim#grep('rg --vimgrep --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" '.shellescape(<q-args>), 1, <bang>0)
