@@ -26,6 +26,8 @@
     ~/.config/kitty: kitty
     
 - shell:
+    - [curl https://rclone.org/install.sh | sudo bash, Install rclone for syncing with cloud storages]
+
     # - description: Installing submodules 
     #   command: git submodule update --init --recursive
     #   stdout: true
