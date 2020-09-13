@@ -37,12 +37,10 @@ filetype plugin indent on
 " Show line numbers
 set number rnu
 set wildmenu
-
-" Show file stats
 set ruler
 
 " Blink cursor on error instead of beeping (grr)
-set visualbell
+" set visualbell
 
 " Encoding
 set encoding=utf-8
@@ -72,20 +70,19 @@ runtime! macros/matchit.vim
 set hidden
 
 " Status bar
-set laststatus=2
+" set laststatus=2
 
 " Last line
 set showmode
 set showcmd
 
 " Searching
-"set hlsearch
+set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 set showmatch
 
-" Textmate holdouts
 
 
 " Visualize tabs and newlines
@@ -100,3 +97,4 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 " set background=dark
 highlight LineNr term=bold ctermfg=DarkGrey 
 
+let g:highlightedyank_highlight_duration = 300

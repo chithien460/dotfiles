@@ -116,7 +116,7 @@ note () {
       ;;
     sync)
       pushd "$notes_dir"
-      git pull origin master
+      git pull
       msg="Regenerated at $(date -u '+%Y-%m-%d %H:%M:%S') UTC"
       git add .
       git commit -m "$msg"
@@ -142,9 +142,7 @@ note () {
 	  neuron search -a -e
 	  ;;
 	*)
-      pushd "$notes_dir"
-	  vim inbox.md
-      popd
+	  vim "$notes_dir"/inbox.md
 	  ;; 
   esac
 }
@@ -172,4 +170,5 @@ fi
 if [ -f ~/.shell_local_after ]; then
     source ~/.shell_local_after
 fi
+
 

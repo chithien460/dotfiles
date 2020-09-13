@@ -47,7 +47,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'morhetz/gruvbox'
 " Plug 'shushcat/vim-minimd'
-Plug 'rlue/vim-barbaric'
+" Plug 'rlue/vim-barbaric'
 " Plug 'dkarter/bullets.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
