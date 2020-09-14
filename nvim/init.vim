@@ -18,6 +18,7 @@ set autoindent
 set clipboard+=unnamedplus
 set shell=/usr/bin/zsh
 set pastetoggle=<F2>
+set scrolloff=3
 
 set encoding=UTF-8
 set mouse=a 
@@ -27,6 +28,7 @@ set shiftwidth=4
 
 set undodir=~/.vim/undodir
 set undofile
+set foldmethod=indent 
 
 let mapleader = " "
 let notesdir= "~/notes"
@@ -202,7 +204,7 @@ endif
  	Limelight
  	" set background=light
  	set linespace=7
- 	" set wrap
+ 	set wrap
  	" Limelight
  	let &l:statusline = '%M'
  	hi StatusLine ctermfg=red guifg=red cterm=NONE
@@ -215,7 +217,7 @@ endif
  	Limelight!	
   	" set background=dark
  	set linespace=0
- 	" set nowrap
+ 	set nowrap
  	" Limelight!
  endfunction
 
