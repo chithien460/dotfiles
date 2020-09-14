@@ -31,7 +31,6 @@ set undofile
 set foldmethod=indent 
 
 let mapleader = " "
-let notesdir= "~/notes"
 
 " Plug-Ins Installation via vim-plug
 " -------------------------------
@@ -81,7 +80,7 @@ noremap <C-h> :History<CR>
 noremap <C-p> :Files<CR>
 noremap <Leader>no :lcd ~/notes<CR>:Rg<CR>
 noremap <C-l> :noh<CR><C-L>
-noremap <C-/> :Rg<CR>
+noremap <leader>/ :Rg<CR>
 " Configure for Python development
 let g:pymode_run_bind='<F5>'
 noremap <F5> <Esc>:w<CR>:!python3 %<CR>
@@ -131,9 +130,10 @@ augroup END
 " PLUG-INS CONFIGURATION
 " ------------------------- 
 
-let g:netrw_preview = 1
-let g:vimwiki_list = [{ 'path': '~/notes/', 'syntax':'markdown', 'ext': '.md' }]
 let g:highlightedyank_highlight_duration = 250
+
+let g:netrw_preview = 1
+" let g:vimwiki_list = [{ 'path': '~/notes/', 'syntax':'markdown', 'ext': '.md' }]
 let g:vim_markdown_folding_disabled = 1
 set conceallevel=2
 
@@ -148,6 +148,15 @@ let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
 nmap <Plug> <Plug>(mkdx-text-italic-n)
 vmap <Plug> <Plug>(mkdx-text-italic-v)
 
+" --------
+" Setup my notes within vim
+" ----------
+let notesdir= "~/notes"
+autocmd FileType markdown setl suffixesadd+=.md
+
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
+
 " auto-sync notes
 " augroup auto_sync_notes
 " 	autocmd!
@@ -160,9 +169,6 @@ vmap <Plug> <Plug>(mkdx-text-italic-v)
 " 	autocmd VimEnter ~/notes/* !cd ~/notes;git pull origin master
 " augroup END
 
-
-" WSL yank support
-let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
 if executable(s:clip)
     augroup WSLYank
             autocmd!
@@ -226,14 +232,16 @@ endif
 
 " Configure for Python
 " ---------------------
-au BufRead *.py
+autocmd BufRead *.py
     \ set expandtab       |" replace tabs with spaces
     \ set autoindent      |" copy indent when starting a new line
     \ set tabstop=4
     \ set softtabstop=4
     \ set shiftwidth=4
 
+" FZF notes
 " command! -bang -nargs=* Find
 "   \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 "
 " command! -bang -nargs=* Find call fzf#vim#grep('rg --vimgrep --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" '.shellescape(<q-args>), 1, <bang>0)
+"
