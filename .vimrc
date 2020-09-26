@@ -22,6 +22,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'vim/killersheep'
 Plug 'dbeniamine/cheat.sh-vim'
 
 call plug#end()
@@ -98,3 +99,9 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 highlight LineNr term=bold ctermfg=DarkGrey 
 
 let g:highlightedyank_highlight_duration = 300
+
+
+"gVim: disable menu bar and Toolbar
+" set guioptions -=m 
+" set guioptions -=T
+

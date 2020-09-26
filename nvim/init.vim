@@ -28,7 +28,7 @@ set shiftwidth=4
 
 set undodir=~/.vim/undodir
 set undofile
-set foldmethod=indent 
+set foldmethod=syntax 
 
 let mapleader = " "
 
