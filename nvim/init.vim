@@ -124,7 +124,8 @@ inoremap <c-e> <c-o>$
 
 augroup TerminalStuff
 	autocmd!
-	autocmd TermOpen * setlocal nonumber norelativenumber
+	autocmd TermEnter * setlocal nonumber norelativenumber
+	autocmd TermLeave * setlocal number relativenumber
 augroup END
 
 " PLUG-INS CONFIGURATION
