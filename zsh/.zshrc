@@ -161,11 +161,6 @@ cheat() {
     fi
 }
 
-TRAPEXIT() {
-	note sync
-	echo "FINISH: note sync"
-    sleep 1
-}
 
 
 if [ -e /home/chithien/.nix-profile/etc/profile.d/nix.sh ]; then . /home/chithien/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
@@ -179,5 +174,11 @@ fi
 if [ -f ~/.shell_local_after ]; then
     source ~/.shell_local_after
 fi
+
+TRAPEXIT() {
+	note sync
+	echo "FINISH: note sync"
+    sleep 1
+}
 
 
