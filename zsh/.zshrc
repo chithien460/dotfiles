@@ -161,6 +161,13 @@ cheat() {
     fi
 }
 
+TRAPEXIT() {
+	note sync
+	echo "FINISH: note sync"
+    sleep 1
+}
+
+
 if [ -e /home/chithien/.nix-profile/etc/profile.d/nix.sh ]; then . /home/chithien/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 # Allow local customizations in the ~/.zshrc_local_after file

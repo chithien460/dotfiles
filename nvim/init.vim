@@ -28,7 +28,7 @@ set shiftwidth=4
 
 set undodir=~/.vim/undodir
 set undofile
-set foldmethod=syntax 
+" set foldmethod=syntax 
 
 let mapleader = " "
 
@@ -45,10 +45,10 @@ call plug#begin()
 " Plug 'vimwiki/vimwiki'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'machakann/vim-highlightedyank' 
-Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
+" Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'morhetz/gruvbox'
 " Plug 'shushcat/vim-minimd'
-" Plug 'rlue/vim-barbaric'
+Plug 'rlue/vim-barbaric'
 " Plug 'dkarter/bullets.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -84,6 +84,7 @@ noremap <leader>/ :Rg<CR>
 " Configure for Python development
 let g:pymode_run_bind='<F5>'
 noremap <F5> <Esc>:w<CR>:!python3 %<CR>
+
 
 " For Emacs-style editing on the command-line: >
 " --------------------------------------------
@@ -128,7 +129,7 @@ augroup TerminalStuff
 	autocmd TermLeave * setlocal number relativenumber
 augroup END
 
-" PLUG-INS CONFIGURATION
+". PLUG-INS CONFIGURATION
 " ------------------------- 
 
 let g:highlightedyank_highlight_duration = 250
@@ -139,7 +140,7 @@ let g:vim_markdown_folding_disabled = 1
 set conceallevel=2
 
 let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
-                        \ 'enter': { 'shift': 0 },
+                        \ 'enter': { 'shift': 1 },
                         \ 'links': { 'external': { 'enable': 1 } },
                         \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
                         \ 'fold': { 'enable': 0 },
@@ -148,6 +149,7 @@ let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
 
 nmap <Plug> <Plug>(mkdx-text-italic-n)
 vmap <Plug> <Plug>(mkdx-text-italic-v)
+nmap <Plug> <Plug>(mkdx-indent)
 
 " --------
 " Setup my notes within vim
