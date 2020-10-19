@@ -163,13 +163,9 @@ let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
 " auto-sync notes
 " augroup auto_sync_notes
 " 	autocmd!
-" 	autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%";git push origin master
-" augroup END
-
-" Sync notes after entering Vim
-" augroup pull_notes
-" 	autocmd!
-" 	autocmd VimEnter ~/notes/* !cd ~/notes;git pull origin master
+" 	autocmd VimEnter ~/notes/inbox.md !cd ~/notes;git pull origin master
+" 	" autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%";git push origin master
+" 	autocmd BufDelete ~/notes/* !cd ~/notes;git add .;git commit -m "Auto commit of %:t." "%";git push origin master
 " augroup END
 
 if executable(s:clip)
