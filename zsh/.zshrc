@@ -177,9 +177,12 @@ if [ -f ~/.shell_local_after ]; then
 fi
 
 TRAPEXIT() {
-	note sync
-	echo "FINISH: note sync"
-    sleep 1
+	echo -n "Sync notes (y/n)? "
+	old_stty_cfg=$(stty -g)
+	stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
+	if echo "$answer" | grep -iq "^y" ;then
+		note sync
+	fi
 }
 
 

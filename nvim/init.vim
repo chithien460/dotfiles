@@ -161,12 +161,19 @@ autocmd FileType markdown setl suffixesadd+=.md
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
 
 " auto-sync notes
-" augroup auto_sync_notes
-" 	autocmd!
-" 	autocmd VimEnter ~/notes/inbox.md !cd ~/notes;git pull origin master
-" 	" autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%";git push origin master
-" 	autocmd BufDelete ~/notes/* !cd ~/notes;git add .;git commit -m "Auto commit of %:t." "%";git push origin master
-" augroup END
+augroup auto_sync_notes
+	autocmd!
+	autocmd VimEnter ~/notes/* call PullNotes() 
+	function PullNotes()
+		let choice = confirm("Pull notes?", "&Yes\n&No",2)
+	    if choice == 1	
+		 	!cd ~/notes;git pull origin master
+		endif
+	endfunction
+
+	" autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%";git push origin master
+	autocmd BufDelete ~/notes/* !cd ~/notes;git add .;git commit -m "Auto commit of %:t." "%";git push origin master
+augroup END
 
 if executable(s:clip)
     augroup WSLYank
