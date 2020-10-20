@@ -172,7 +172,7 @@ augroup auto_sync_notes
 	endfunction
 
 	" autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%";git push origin master
-	autocmd BufDelete ~/notes/* !cd ~/notes;git add .;git commit -m "Auto commit of %:t." "%";git push origin master
+	" autocmd BufDelete ~/notes/* !cd ~/notes;git add .;git commit -m "Auto commit of %:t." "%";git push origin master
 augroup END
 
 if executable(s:clip)
