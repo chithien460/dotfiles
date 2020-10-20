@@ -1,3 +1,4 @@
+"  Tecix's VIMRC (NeoVim)
 "  SET OUT STUFF
 " -----------------------
 set nocompatible
@@ -162,8 +163,6 @@ let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
 
 " auto-sync notes
 augroup auto_sync_notes
-	autocmd!
-	autocmd VimEnter ~/notes/* call PullNotes() 
 	function PullNotes()
 		let choice = confirm("Pull notes?", "&Yes\n&No",2)
 	    if choice == 1	
@@ -171,8 +170,16 @@ augroup auto_sync_notes
 		endif
 	endfunction
 
-	" autocmd BufWritePost ~/notes/* !cd ~/notes;git add "%";git commit -m "Auto commit of %:t." "%";git push origin master
-	" autocmd BufDelete ~/notes/* !cd ~/notes;git add .;git commit -m "Auto commit of %:t." "%";git push origin master
+	function PushNotes()
+		let choice = confirm("Push updated notes?", "&Yes\n&No",2)
+	    if choice == 1	
+			!cd ~/notes;git add .;git commit -m "Auto commit of %:t." "%";git push origin master
+		endif
+	endfunction
+
+	autocmd!
+	autocmd VimEnter ~/notes/* call PullNotes() 
+	autocmd BufWritePost ~/notes/* call PushNotes()
 augroup END
 
 if executable(s:clip)
