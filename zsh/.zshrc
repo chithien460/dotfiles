@@ -177,11 +177,14 @@ if [ -f ~/.shell_local_after ]; then
 fi
 
 TRAPEXIT() {
-	echo -n "Sync notes (y/n)? "
-	old_stty_cfg=$(stty -g)
-	stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
-	if echo "$answer" | grep -iq "^y" ;then
-		note sync
+	 #last terminal instance
+	if [[ $(pgrep -fc 'terminal|kitty') -eq 1 ]]; then  
+		echo -n "Sync notes (y/n)? "
+		old_stty_cfg=$(stty -g)
+		stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
+		if echo "$answer" | grep -iq "^y" ;then
+			note sync
+		fi
 	fi
 }
 
