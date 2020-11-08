@@ -116,10 +116,11 @@ note () {
       ;;
     sync)
       pushd "$notes_dir"
-      git pull
-      msg="Regenerated at $(date -u '+%Y-%m-%d %H:%M:%S') UTC"
+	  msg=`git status --porcelain`
+      # msg="Regenerated at $(date -u '+%Y-%m-%d %H:%M:%S') UTC"
       git add .
       git commit -m "$msg"
+      git pull
       git push origin master
       popd
       # ls "$notes_dir"
@@ -148,6 +149,17 @@ note () {
 	  ;; 
   esac
 }
+
+# Sync notes when openning
+ask_sync_notes() {
+	echo "Sync notes (y/n): "
+	read -k answer
+	if [ "$answer" != "${answer#[Yy]}" ] ;then
+		note sync &>/dev/null
+	fi
+}
+
+# ask_sync_notes
 
 # cheat sheets (github.com/chubin/cheat.sh), find out how to use commands
 # example 'cheat tar'
@@ -178,13 +190,15 @@ fi
 
 TRAPEXIT() {
 	 #last terminal instance
+	gstatus=`git status --porcelain`
 	if [[ $(pgrep -fc 'terminal|kitty') -eq 1 ]]; then  
-		echo -n "Sync notes (y/n)? "
-		old_stty_cfg=$(stty -g)
-		stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
-		if echo "$answer" | grep -iq "^y" ;then
-			note sync
-		fi
+		note sync
+		# echo -n "Sync notes (y/n)? "
+		# old_stty_cfg=$(stty -g)
+		# stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
+		# if echo "$answer" | grep -iq "^y" ;then
+		# 	note sync
+		# fi
 	fi
 }
 

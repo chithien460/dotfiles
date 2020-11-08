@@ -82,9 +82,12 @@ noremap <C-p> :Files<CR>
 noremap <Leader>no :lcd ~/notes<CR>:Rg<CR>
 noremap <C-l> :noh<CR><C-L>
 noremap <leader>/ :Rg<CR>
+"
 " Configure for Python development
 let g:pymode_run_bind='<F5>'
-noremap <F5> <Esc>:w<CR>:!python3 %<CR>
+" noremap <F5> <Esc>:w<CR>:!python3 %<CR>
+autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
 
 " For Emacs-style editing on the command-line: >
@@ -164,10 +167,14 @@ let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
 " auto-sync notes
 augroup auto_sync_notes
 	function PullNotes()
-		let choice = confirm("Pull notes?", "&Yes\n&No",2)
-	    if choice == 1	
+		let gstatus = system('git status --porcelain')
+		if gstatus != 0
 		 	!cd ~/notes;git pull origin master
 		endif
+		" let choice = confirm("Pull notes?", "&Yes\n&No",2)
+	    " if choice == 1	
+		"  	!cd ~/notes;git pull origin master
+		" endif
 	endfunction
 
 	function PushNotes()
