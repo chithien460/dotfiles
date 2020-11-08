@@ -167,14 +167,14 @@ let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
 " auto-sync notes
 augroup auto_sync_notes
 	function PullNotes()
-		let gstatus = system('git status --porcelain')
-		if gstatus != 0
-		 	!cd ~/notes;git pull origin master
-		endif
-		" let choice = confirm("Pull notes?", "&Yes\n&No",2)
-	    " if choice == 1	
+		" let gstatus = system('git status --porcelain')
+		" if gstatus != 0
 		"  	!cd ~/notes;git pull origin master
 		" endif
+		let choice = confirm("Pull notes?", "&Yes\n&No",2)
+	    if choice == 1	
+		 	!cd ~/notes;git pull origin master
+		endif
 	endfunction
 
 	function PushNotes()

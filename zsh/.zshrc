@@ -99,6 +99,7 @@ fi
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+export notes_dir="$HOME/notes/"
 
 # alternative to select-word-style bash
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
@@ -109,7 +110,6 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # my Note function
 note () {
-  local notes_dir="$HOME/notes/"
   case "$1" in
     c | cd | dir)
       cd "$notes_dir"
@@ -150,16 +150,6 @@ note () {
   esac
 }
 
-# Sync notes when openning
-ask_sync_notes() {
-	echo "Sync notes (y/n): "
-	read -k answer
-	if [ "$answer" != "${answer#[Yy]}" ] ;then
-		note sync &>/dev/null
-	fi
-}
-
-# ask_sync_notes
 
 # cheat sheets (github.com/chubin/cheat.sh), find out how to use commands
 # example 'cheat tar'
@@ -173,7 +163,17 @@ cheat() {
     fi
 }
 
-
+# Run the command given by "$@" in the background
+silent_background() {
+  if [[ -n $ZSH_VERSION ]]; then  # zsh:  https://superuser.com/a/1285272/365890
+    setopt local_options no_notify no_monitor
+    "$@" &
+  elif [[ -n $BASH_VERSION ]]; then  # bash: https://stackoverflow.com/a/27340076/5353461
+    { 2>&3 "$@"& } 3>&2 2>/dev/null
+  else  # Unknownness - just background it
+    "$@" &
+  fi
+}
 
 if [ -e /home/chithien/.nix-profile/etc/profile.d/nix.sh ]; then . /home/chithien/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
@@ -191,15 +191,17 @@ fi
 TRAPEXIT() {
 	 #last terminal instance
 	gstatus=`git status --porcelain`
-	if [[ $(pgrep -fc 'terminal|kitty') -eq 1 ]]; then  
+	if [[ $(gstatus) -ne 0 ]]; then
 		note sync
-		# echo -n "Sync notes (y/n)? "
-		# old_stty_cfg=$(stty -g)
-		# stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
-		# if echo "$answer" | grep -iq "^y" ;then
-		# 	note sync
-		# fi
 	fi
+	# if [[ $(pgrep -fc 'terminal|kitty') -eq 1 ]]; then  
+	# 	echo -n "Sync notes (y/n)? "
+	# 	old_stty_cfg=$(stty -g)
+	# 	stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
+	# 	if echo "$answer" | grep -iq "^y" ;then
+	# 		note sync
+	# 	fi
+	# fi
 }
 
 
