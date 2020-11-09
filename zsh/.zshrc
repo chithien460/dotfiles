@@ -194,6 +194,7 @@ TRAPEXIT() {
 	gstatus=`git status --porcelain`
 	if [[ $(gstatus) -ne 0 ]]; then
 		note sync
+	fi
 	# if [[ $numTerm -eq 1 ]]; then  
 	# 	echo -n "Sync notes (y/n)? "
 	# 	old_stty_cfg=$(stty -g)
