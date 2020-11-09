@@ -182,7 +182,7 @@ note_fetch_sync() {
 	fi
 }
 
-silent_background note_fetch_sync
+silent_background git -C $notes_dir pull
 
 if [ -e /home/chithien/.nix-profile/etc/profile.d/nix.sh ]; then . /home/chithien/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
@@ -202,8 +202,8 @@ TRAPEXIT() {
 	if [ ${#gstatus} -ne 0 ]; then 
 		note sync
 	fi
+	# checking last terminal instance
 	# numTerm=$(ps aux | grep -v 'grep' | grep -c 'Terminal\|terminal\|kitty')
-	 #last terminal instance
 	# if [[ $numTerm -eq 1 ]]; then  
 	# 	echo -n "Sync notes (y/n)? "
 	# 	old_stty_cfg=$(stty -g)
