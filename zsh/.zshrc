@@ -189,12 +189,12 @@ if [ -f ~/.shell_local_after ]; then
 fi
 
 TRAPEXIT() {
+	numTerm=$(ps aux | grep -v 'grep' | grep -c 'Terminal\|terminal\|kitty')
 	 #last terminal instance
 	gstatus=`git status --porcelain`
 	if [[ $(gstatus) -ne 0 ]]; then
 		note sync
-	fi
-	# if [[ $(pgrep -fc 'terminal|kitty') -eq 1 ]]; then  
+	# if [[ $numTerm -eq 1 ]]; then  
 	# 	echo -n "Sync notes (y/n)? "
 	# 	old_stty_cfg=$(stty -g)
 	# 	stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
