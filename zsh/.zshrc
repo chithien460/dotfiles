@@ -167,13 +167,22 @@ cheat() {
 silent_background() {
   if [[ -n $ZSH_VERSION ]]; then  # zsh:  https://superuser.com/a/1285272/365890
     setopt local_options no_notify no_monitor
-    "$@" &
+    "$@" & disown;
   elif [[ -n $BASH_VERSION ]]; then  # bash: https://stackoverflow.com/a/27340076/5353461
     { 2>&3 "$@"& } 3>&2 2>/dev/null
   else  # Unknownness - just background it
     "$@" &
   fi
 }
+note_fetch_sync() {
+	git -C $notes_dir fetch
+	gstatus=`git -C $notes_dir status --porcelain`
+	if [ ${#gstatus} -ne 0 ]; then 
+		note sync
+	fi
+}
+
+silent_background note_fetch_sync
 
 if [ -e /home/chithien/.nix-profile/etc/profile.d/nix.sh ]; then . /home/chithien/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
@@ -189,12 +198,12 @@ if [ -f ~/.shell_local_after ]; then
 fi
 
 TRAPEXIT() {
-	numTerm=$(ps aux | grep -v 'grep' | grep -c 'Terminal\|terminal\|kitty')
-	 #last terminal instance
 	gstatus=`git -C $notes_dir status --porcelain`
 	if [ ${#gstatus} -ne 0 ]; then 
 		note sync
 	fi
+	# numTerm=$(ps aux | grep -v 'grep' | grep -c 'Terminal\|terminal\|kitty')
+	 #last terminal instance
 	# if [[ $numTerm -eq 1 ]]; then  
 	# 	echo -n "Sync notes (y/n)? "
 	# 	old_stty_cfg=$(stty -g)
