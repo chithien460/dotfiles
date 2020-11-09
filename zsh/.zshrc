@@ -191,8 +191,8 @@ fi
 TRAPEXIT() {
 	numTerm=$(ps aux | grep -v 'grep' | grep -c 'Terminal\|terminal\|kitty')
 	 #last terminal instance
-	gstatus=`git status --porcelain`
-	if [[ $(gstatus) -ne 0 ]]; then
+	gstatus=`git -C $notes_dir status --porcelain`
+	if [ ${#gstatus} -ne 0 ]; then 
 		note sync
 	fi
 	# if [[ $numTerm -eq 1 ]]; then  
