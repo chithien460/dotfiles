@@ -182,7 +182,6 @@ note_fetch_sync() {
 	fi
 }
 
-silent_background git -C $notes_dir pull
 
 if [ -e /home/chithien/.nix-profile/etc/profile.d/nix.sh ]; then . /home/chithien/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
@@ -198,10 +197,12 @@ if [ -f ~/.shell_local_after ]; then
 fi
 
 TRAPEXIT() {
-	gstatus=`git -C $notes_dir status --porcelain`
-	if [ ${#gstatus} -ne 0 ]; then 
-		note sync
-	fi
+	silent_background note_fetch_sync
+	# git -C $notes_dir fetch
+	# gstatus=`git -C $notes_dir status --porcelain`
+	# if [ ${#gstatus} -ne 0 ]; then 
+	# 	note sync
+	# fi
 	# checking last terminal instance
 	# numTerm=$(ps aux | grep -v 'grep' | grep -c 'Terminal\|terminal\|kitty')
 	# if [[ $numTerm -eq 1 ]]; then  
