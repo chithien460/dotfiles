@@ -83,6 +83,7 @@ noremap <C-p> :Files<CR>
 noremap <Leader>no :lcd ~/notes<CR>:Rg<CR>
 noremap <C-l> :noh<CR><C-L>
 noremap <leader>/ :Rg<CR>
+noremap <C-s> :Rg<CR>
 "
 " Configure for Python development
 let g:pymode_run_bind='<F5>'
