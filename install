@@ -4,7 +4,7 @@ set -e
 
 CONFIG_SUFFIX="install.conf.yaml"
 DOTBOT_DIR="dotbot"
-PKG_CONFIG="pkg.ubuntu.conf.yaml"
+PKG_CONFIG="pkg.conf.yaml"
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
