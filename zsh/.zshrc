@@ -116,8 +116,7 @@ note () {
       ;;
     sync)
       pushd "$notes_dir"
-	  msg=`git status --porcelain`
-      # msg="Regenerated at $(date -u '+%Y-%m-%d %H:%M:%S') UTC"
+      msg="Regenerated at $(date -u '+%Y-%m-%d %H:%M:%S') UTC"
       git add .
       git commit -m "$msg"
       git pull
@@ -174,33 +173,27 @@ silent_background() {
     "$@" &
   fi
 }
-note_fetch_sync() {
+note_sync_updated() {
 	git -C $notes_dir fetch
 	gstatus=`git -C $notes_dir status --porcelain`
 	if [ ${#gstatus} -ne 0 ]; then 
 		note sync
 	fi
 }
+note_sync() {
+	msg="Regenerated at $(date -u '+%Y-%m-%d %H:%M:%S') UTC"
+	git -C $notes_dir add .
+	git -C $notes_dir commit -m "$msg"
+	git -C $notes_dir pull
+	git -C $notes_dir push origin master
+}
 
-silent_background note_fetch_sync
+## MAIN ==
+# silent_background note_fetch_sync
+silent_background note_sync
 
 TRAPEXIT() {
-	silent_background note_fetch_sync
-	# git -C $notes_dir fetch
-	# gstatus=`git -C $notes_dir status --porcelain`
-	# if [ ${#gstatus} -ne 0 ]; then 
-	# 	note sync
-	# fi
-	# checking last terminal instance
-	# numTerm=$(ps aux | grep -v 'grep' | grep -c 'Terminal\|terminal\|kitty')
-	# if [[ $numTerm -eq 1 ]]; then  
-	# 	echo -n "Sync notes (y/n)? "
-	# 	old_stty_cfg=$(stty -g)
-	# 	stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
-	# 	if echo "$answer" | grep -iq "^y" ;then
-	# 		note sync
-	# 	fi
-	# fi
+	silent_background note_sync_updated
 }
 
 if [ -e /home/chithien/.nix-profile/etc/profile.d/nix.sh ]; then . /home/chithien/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
