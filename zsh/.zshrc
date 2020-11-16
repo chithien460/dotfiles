@@ -173,7 +173,7 @@ silent_background() {
     "$@" &
   fi
 }
-note_sync_updated() {
+note_sync_ifupdated() {
 	git -C $notes_dir fetch
 	gstatus=`git -C $notes_dir status --porcelain`
 	if [ ${#gstatus} -ne 0 ]; then 
@@ -189,12 +189,9 @@ note_sync() {
 }
 
 ## MAIN ==
-# silent_background note_fetch_sync
-silent_background note_sync
+silent_background note_sync_ifupdated
+# silent_background note_sync
 
-TRAPEXIT() {
-	silent_background note_sync_updated
-}
 
 if [ -e /home/chithien/.nix-profile/etc/profile.d/nix.sh ]; then . /home/chithien/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
