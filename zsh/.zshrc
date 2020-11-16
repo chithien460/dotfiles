@@ -173,6 +173,7 @@ silent_background() {
     "$@" &
   fi
 }
+
 note_sync_updated() {
 	git -C $notes_dir fetch
 	gstatus=`git -C $notes_dir status --porcelain`
@@ -180,21 +181,19 @@ note_sync_updated() {
 		note sync
 	fi
 }
+
 note_sync() {
 	msg="Regenerated at $(date -u '+%Y-%m-%d %H:%M:%S') UTC"
-	git -C $notes_dir add .
-	git -C $notes_dir commit -m "$msg"
-	git -C $notes_dir pull
-	git -C $notes_dir push origin master
+	git -C $notes_dir add . 
+	git -C $notes_dir commit -m "$msg"  --quiet
+	# git -C $notes_dir pull --quiet
+	git -C $notes_dir push origin master --quiet
 }
 
 ## MAIN ==
 # silent_background note_fetch_sync
-silent_background note_sync
-
-TRAPEXIT() {
-	silent_background note_sync_updated
-}
+# silent_background note_sync_updated
+silent_background note_sync_updated
 
 if [ -e /home/chithien/.nix-profile/etc/profile.d/nix.sh ]; then . /home/chithien/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
