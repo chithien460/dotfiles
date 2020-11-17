@@ -176,7 +176,8 @@ silent_background() {
 
 note_sync_updated() {
 	git -C $notes_dir fetch
-	gstatus=`git -C $notes_dir status --porcelain`
+	# gstatus=`git -C $notes_dir status --porcelain`
+	gstatus=`git -C $notes_dir status | grep 'branch is up to date'`
 	if [ ${#gstatus} -ne 0 ]; then 
 		note sync
 	fi
