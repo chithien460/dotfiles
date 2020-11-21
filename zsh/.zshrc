@@ -134,13 +134,13 @@ note () {
       popd
       ;;
 	n | new) 
-	  neuron new -e
+	  neuron -d $notes_dir new -e
 	  ;;
 	l | list) 
-	  neuron search -e
+	  neuron -d $notes_dir search -e
 	  ;;
     s | search)
-	  neuron search -a -e
+	  neuron -d $notes_dir search -a -e
 	  ;;
 	*)
       pushd "$notes_dir"
@@ -182,7 +182,7 @@ note_fetch_sync() {
 	fi
 }
 
-silent_background note_fetch_sync
+silent_background note sync
 
 TRAPEXIT() {
 	silent_background note_fetch_sync
