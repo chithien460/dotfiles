@@ -59,7 +59,7 @@ Plug 'BurntSushi/ripgrep'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'dbeniamine/cheat.sh-vim'
-" Plug 'fiatjaf/neuron.vim'
+Plug 'fiatjaf/neuron.vim'
 Plug 'SidOfc/mkdx'
 Plug 'tpope/vim-surround'
 " Plug 'liuchengxu/vim-which-key'
@@ -82,6 +82,7 @@ noremap <C-p> :Files<CR>
 noremap <Leader>no :lcd ~/notes<CR>:Rg<CR>
 noremap <C-l> :noh<CR><C-L>
 noremap <leader>/ :Rg<CR>
+noremap <C-s> :Rg<CR>
 "
 " Configure for Python development
 let g:pymode_run_bind='<F5>'
