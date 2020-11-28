@@ -176,7 +176,8 @@ silent_background() {
 
 note_sync_updated() {
 	git -C $notes_dir fetch
-	gstatus=`git -C $notes_dir status --porcelain`
+	# gstatus=`git -C $notes_dir status --porcelain`
+	gstatus=`git -C $notes_dir status | grep 'changes'`
 	if [ ${#gstatus} -ne 0 ]; then 
 		note sync
 	fi
@@ -185,6 +186,11 @@ note_sync_updated() {
 
 ## MAIN ==
 silent_background note_sync_updated
+
+TRAPEXIT() {
+	silent_background note_sync_updated
+}
+
 
 if [ -e /home/chithien/.nix-profile/etc/profile.d/nix.sh ]; then . /home/chithien/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
