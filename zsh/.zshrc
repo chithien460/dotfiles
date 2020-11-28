@@ -133,13 +133,13 @@ note () {
       popd
       ;;
 	n | new) 
-	  neuron new -e
+	  neuron -d $notes_dir new -e
 	  ;;
 	l | list) 
-	  neuron search -e
+	  neuron -d $notes_dir search -e
 	  ;;
     s | search)
-	  neuron search -a -e
+	  neuron -d $notes_dir search -a -e
 	  ;;
 	*)
       pushd "$notes_dir"
