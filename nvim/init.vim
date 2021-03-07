@@ -77,12 +77,11 @@ map Y y$"
 inoremap <C-U> <C-G>u<C-U>
 nnoremap <Leader>g :Goyo<CR>
 noremap <Leader>w :set wrap!<CR>
+noremap <C-l> :noh<CR><C-L>
 noremap <C-h> :History<CR>
 noremap <C-p> :Files<CR>
-noremap <Leader>no :lcd ~/notes<CR>:Rg<CR>
-noremap <C-l> :noh<CR><C-L>
-noremap <leader>/ :Rg<CR>
-noremap <C-s> :Rg<CR>
+noremap <C-M-p> :Rg<CR>
+
 "
 " Configure for Python development
 let g:pymode_run_bind='<F5>'
@@ -157,10 +156,11 @@ vmap <Plug> <Plug>(mkdx-text-italic-v)
 nmap <Plug> <Plug>(mkdx-indent)
 
 " --------
-" Setup my notes within vim
+" Working with my notes
 " ----------
 let notesdir= "~/notes"
 autocmd FileType markdown setl suffixesadd+=.md
+noremap <Leader>no :lcd `=notesdir`<CR>:Rg<CR>
 
 " WSL yank support
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
@@ -261,9 +261,11 @@ autocmd BufRead *.py
     \ set softtabstop=4
     \ set shiftwidth=4
 
+" Configure FZF
+" --------------------
 " FZF notes
 " command! -bang -nargs=* Find
 "   \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 "
-" command! -bang -nargs=* Find call fzf#vim#grep('rg --vimgrep --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --vimgrep --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" '.shellescape(<q-args>), 1, <bang>0)
 "
