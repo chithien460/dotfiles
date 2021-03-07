@@ -142,9 +142,7 @@ note () {
 	  neuron -d $notes_dir search -a -e
 	  ;;
 	*)
-      pushd "$notes_dir"
-	  vim inbox.md
-	  popd
+	  cd "$notes_dir" && vim inbox.md && cd -
 	  ;; 
   esac
 }
