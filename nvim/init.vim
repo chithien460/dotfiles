@@ -59,10 +59,10 @@ Plug 'BurntSushi/ripgrep'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'dbeniamine/cheat.sh-vim'
-Plug 'fiatjaf/neuron.vim'
+" Plug 'PsiPhire/neuron.vim'
 Plug 'SidOfc/mkdx'
 Plug 'tpope/vim-surround'
-" Plug 'liuchengxu/vim-which-key'
+Plug 'liuchengxu/vim-which-key'
 " Plug 'plasticboy/vim-markdown' 
 
 call plug#end()
@@ -136,6 +136,9 @@ augroup END
 ". PLUG-INS CONFIGURATION
 " ------------------------- 
 
+" vim-which-key
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
 let g:highlightedyank_highlight_duration = 250
 
 let g:netrw_preview = 1
@@ -161,6 +164,7 @@ nmap <Plug> <Plug>(mkdx-indent)
 let notesdir= "~/notes"
 autocmd FileType markdown setl suffixesadd+=.md
 noremap <Leader>no :lcd `=notesdir`<CR>:Rg<CR>
+let g:neuron_search_backend = 'rg'
 
 " WSL yank support
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path

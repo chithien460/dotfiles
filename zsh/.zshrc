@@ -186,9 +186,11 @@ note_sync_updated() {
 num_terminal=`ls /dev/pts | wc -l`
 if [ $num_terminal -lt 3 ]; then
 	silent_background note_sync_updated
-	TRAPEXIT() {
-		silent_background note_sync_updated
-	}
+	# note_sync_updated
+	# TRAPEXIT() {
+	# 	silent_background note_sync_updated
+	# }
+	trap note_sync_updated EXIT
 fi
 
 if [ -e /home/chithien/.nix-profile/etc/profile.d/nix.sh ]; then . /home/chithien/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
@@ -203,6 +205,7 @@ fi
 if [ -f ~/.shell_local_after ]; then
     source ~/.shell_local_after
 fi
+
 
 
 
