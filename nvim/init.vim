@@ -60,6 +60,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'dbeniamine/cheat.sh-vim'
 " Plug 'PsiPhire/neuron.vim'
+Plug 'ZachariasLenz/neuron.vim'
 Plug 'SidOfc/mkdx'
 Plug 'tpope/vim-surround'
 Plug 'liuchengxu/vim-which-key'
@@ -161,10 +162,11 @@ nmap <Plug> <Plug>(mkdx-indent)
 " --------
 " Working with my notes
 " ----------
-let notesdir= "~/notes"
-autocmd FileType markdown setl suffixesadd+=.md
-noremap <Leader>no :lcd `=notesdir`<CR>:Rg<CR>
+" let notesdir= "~/notes"
+" autocmd FileType markdown setl suffixesadd+=.md
+" noremap <Leader>no :lcd `=notesdir`<CR>:Rg<CR>
 let g:neuron_search_backend = 'rg'
+" let g:neuron_inline_backlinks = 0
 
 " WSL yank support
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
