@@ -1,25 +1,9 @@
-Host tingo
-HostName 139.180.131.41
-User root
-
-Host ja1
-HostName 13.76.41.172
-User ct
-
 Host 3sach-test
 HostName 35.198.217.101
 User ct
 
 Host rez
 HostName 139.180.221.32
-User root
-
-Host sbp-test
-HostName 203.205.21.127 
-User root
-
-Host test.gira
-HostName 45.252.250.245
 User root
 
 Host sumax
@@ -29,3 +13,8 @@ User root
 Host prod.gira
 HostName 45.252.250.248
 User root
+
+Host test.gira
+HostName 45.252.250.245
+User root
+
