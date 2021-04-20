@@ -213,3 +213,6 @@ fi
 if [ -f ~/.shell_local_after ]; then
     source ~/.shell_local_after
 fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
