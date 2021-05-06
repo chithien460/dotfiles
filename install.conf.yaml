@@ -20,10 +20,10 @@
     ~/.ssh/config: ssh/config
     ~/.zshrc: zsh/.zshrc
     ~/.p10k.zsh: zsh/.p10k.zsh
-    # ~/.local/share/nvim/site/autoload/plug.vim: nvim/autoload/vim-plug/plug.vim
-    ~/.config/nvim/init.vim: nvim/init.vim 
     ~/.zsh/powerlevel10k: zsh/powerlevel10k
+    ~/.config/nvim/init.vim: nvim/init.vim 
     ~/.config/kitty: kitty
+    ~/.config/qutebrowser: qutebrowser
     
 - shell:
     - [curl https://rclone.org/install.sh | sudo bash, Install rclone for syncing with cloud storages]
