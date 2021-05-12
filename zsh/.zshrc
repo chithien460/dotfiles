@@ -197,7 +197,10 @@ if [ $num_terminal -lt 3 ]; then
 	# TRAPEXIT() {
 	# 	silent_background note_sync_updated
 	# }
-	trap note_sync_updated EXIT
+
+	# This one work -- but let's disable it cause it annoying.
+	# And I'm using Notion.so for now
+	# trap note_sync_updated EXIT
 fi
 
 if [ -e /home/chithien/.nix-profile/etc/profile.d/nix.sh ]; then . /home/chithien/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
