@@ -172,30 +172,30 @@ let g:neuron_search_backend = 'rg'
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
 
 " auto-sync notes
-augroup auto_sync_notes
-	function PullNotes()
-		" system('cd ~/notes;git fetch')
-		" let gstatus = system('git status --porcelain')
-		" if gstatus != 0
-		"  	!cd ~/notes;git pull origin master
-		" endif
-		let choice = confirm("Pull notes?", "&Yes\n&No",2)
-	    if choice == 1	
-		 	!cd ~/notes;git pull origin master
-		endif
-	endfunction
+" augroup auto_sync_notes
+" 	function PullNotes()
+" 		" system('cd ~/notes;git fetch')
+" 		" let gstatus = system('git status --porcelain')
+" 		" if gstatus != 0
+" 		"  	!cd ~/notes;git pull origin master
+" 		" endif
+" 		let choice = confirm("Pull notes?", "&Yes\n&No",2)
+" 	    if choice == 1	
+" 		 	!cd ~/notes;git pull origin master
+" 		endif
+" 	endfunction
 
-	function PushNotes()
-		let choice = confirm("Push updated notes?", "&Yes\n&No",2)
-	    if choice == 1	
-			!cd ~/notes;git add .;git commit -m "Auto commit of %:t." "%";git push origin master
-		endif
-	endfunction
+" 	function PushNotes()
+" 		let choice = confirm("Push updated notes?", "&Yes\n&No",2)
+" 	    if choice == 1	
+" 			!cd ~/notes;git add .;git commit -m "Auto commit of %:t." "%";git push origin master
+" 		endif
+" 	endfunction
 
-	autocmd!
-	" autocmd VimEnter ~/notes/* call PullNotes() 
-	" autocmd BufWritePost ~/notes/* call PushNotes()
-augroup END
+" 	autocmd!
+" 	" autocmd VimEnter ~/notes/* call PullNotes() 
+" 	" autocmd BufWritePost ~/notes/* call PushNotes()
+" augroup END
 
 if executable(s:clip)
     augroup WSLYank

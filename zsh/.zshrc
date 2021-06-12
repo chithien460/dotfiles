@@ -1,4 +1,4 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Enable Powerlevel7k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -99,7 +99,6 @@ fi
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
-export notes_dir="$HOME/notes/"
 
 # alternative to select-word-style bash
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
@@ -183,19 +182,20 @@ note_sync_updated() {
 
 
 ## MAIN ==
-num_terminal=`ls /dev/pts | wc -l`
-if [ $num_terminal -lt 3 ]; then
-	silent_background note_sync_updated
-	# This one does NOT work
-	# note_sync_updated
-	# TRAPEXIT() {
-	# 	silent_background note_sync_updated
-	# }
+# Sync notes on startup and exit
+# num_terminal=`ls /dev/pts | wc -l`
+# if [ $num_terminal -lt 3 ]; then
+# 	silent_background note_sync_updated
+# 	# This one does NOT work
+# 	# note_sync_updated
+# 	# TRAPEXIT() {
+# 	# 	silent_background note_sync_updated
+# 	# }
 
-	# This one work -- but let's disable it cause it annoying.
-	# And I'm using Notion.so for now
-	# trap note_sync_updated EXIT
-fi
+# 	# This one work -- but let's disable it cause it annoying.
+# 	# And I'm using Notion.so for now
+# 	# trap note_sync_updated EXIT
+# fi
 
 if [ -e /home/chithien/.nix-profile/etc/profile.d/nix.sh ]; then . /home/chithien/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
