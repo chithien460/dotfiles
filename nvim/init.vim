@@ -2,9 +2,55 @@
 "  SET OUT STUFF
 " -----------------------
 set nocompatible
-filetype plugin indent on
-syntax on
 
+" Helps force plugins to load correctly when it is turned back on below
+filetype off
+
+" Plug-Ins Installation via vim-plug
+" -------------------------------
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin()
+
+" Plug 'vimwiki/vimwiki'
+" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+" Plug 'plasticboy/vim-markdown' 
+" Plug 'PsiPhire/neuron.vim'
+" Plug 'dkarter/bullets.vim'
+" Plug 'shushcat/vim-minimd'
+" Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'machakann/vim-highlightedyank' 
+Plug 'morhetz/gruvbox'
+Plug 'rlue/vim-barbaric'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'BurntSushi/ripgrep'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'dbeniamine/cheat.sh-vim'
+" Plug 'ZachariasLenz/neuron.vim'
+Plug 'SidOfc/mkdx'
+Plug 'tpope/vim-surround'
+Plug 'liuchengxu/vim-which-key'
+Plug 'subnut/nvim-ghost.nvim', {'do': ':call nvim_ghost#installer#install()'}
+
+
+call plug#end()
+
+filetype plugin indent on
+
+" THEME
+colorscheme gruvbox
+
+syntax on
 
 set modeline
 set nowrap
@@ -32,45 +78,6 @@ set undofile
 " set foldmethod=syntax 
 
 let mapleader = " "
-
-" Plug-Ins Installation via vim-plug
-" -------------------------------
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-call plug#begin()
-
-" Plug 'vimwiki/vimwiki'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'machakann/vim-highlightedyank' 
-" Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
-Plug 'morhetz/gruvbox'
-" Plug 'shushcat/vim-minimd'
-Plug 'rlue/vim-barbaric'
-" Plug 'dkarter/bullets.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'BurntSushi/ripgrep'
-Plug 'junegunn/limelight.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'dbeniamine/cheat.sh-vim'
-" Plug 'PsiPhire/neuron.vim'
-Plug 'ZachariasLenz/neuron.vim'
-Plug 'SidOfc/mkdx'
-Plug 'tpope/vim-surround'
-Plug 'liuchengxu/vim-which-key'
-" Plug 'plasticboy/vim-markdown' 
-
-call plug#end()
-
-" THEME
-colorscheme gruvbox
-
 " ------------------------------ 
 " KEY BIDDINGS / KEY MAPPINGS
 " ------------------------------ 
